@@ -1,0 +1,179 @@
+#navbarMovie{
+    padding-left: 50px;
+    margin-left: 300px;
+}
+.navbar-nav{
+    cursor: pointer;
+}
+#navbarMovie .navbar-nav{
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    
+}
+#navbarMovie .navbar-nav .nav-item{
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    padding: 0 20px;
+  
+}
+.nav-account .navbar-account:hover{
+    font-weight: bold;
+}
+.nav-account a{
+    text-decoration: none;
+}
+
+#navbarMovie .navbar-nav .nav-item a{
+    text-decoration: none;
+    color: rgba(0,0,0,.55);
+}
+#navbarMovie .navbar-nav .nav-item::after{
+    content: '';
+    display: block;
+    height: 2px;
+    background-image: linear-gradient(to right,#fbbd61,#ec7532);
+    box-shadow: 0 0 20px 0 #fbbd61;
+    width: 0;
+    transition: all .3s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+#navbarMovie .navbar-nav .nav-item.active::after{
+    width: 100%;
+}
+#navbarMovie .navbar-nav .nav-item:hover::after{
+    width: 100%;
+}
+.nav-account{
+    border-bottom: none !important;
+}
+
+.navbar-account span button:hover{
+    font-weight: bold;
+}
+input[type=checkbox] {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    display: none;
+  }
+  
+  .sidebarIconToggle {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 30px;
+    right: 19px;
+    height: 22px;
+    width: 30px;
+  }
+  
+  .navbar-toggler {
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  .spinner {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #333333;
+  }
+  
+  .horizontal {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: relative;
+    float: right;
+    margin-top: 4px;
+  }
+  
+  .diagonal.part-1 {
+    position: relative;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    float: right;
+  }
+  
+  .diagonal.part-2 {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    position: relative;
+    float: right;
+    margin-top: 4px;
+  }
+  
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    opacity: 0;
+  }
+  
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+    margin-top: 8px;
+  }
+  
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+    margin-top: -9px;
+  }
+  
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .ford-text {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    opacity: 0;
+  }
+@media screen and (min-width:1005px){
+    .navAdd{
+        display: none;
+    }
+}
+@media screen and (max-width:1005px){
+    .nav-account{
+        display: none;
+    }
+    #navbarMovie .navbar-nav{
+        border-bottom: none;
+    }
+    #navbarMovie{
+        padding-left: 0;
+        margin-left: 0;
+    }
+    #navbarMovie .navbar-nav .nav-item::after{
+        background-image: none;
+    }
+    #navbarMovie .navbar-nav .nav-item:hover a{
+        color: #fb4226;
+    }
+}

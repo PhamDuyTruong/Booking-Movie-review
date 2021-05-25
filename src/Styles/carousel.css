@@ -1,0 +1,48 @@
+.carousel-item_overlay{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top,#000000,transparent);
+}
+#carouselMovie .carousel-caption .btn-trailer{
+  position: relative;
+  bottom: 200px;
+  left: -100px;
+}
+#carouselMovie .carousel-caption .btn-trailer span{
+    color: #ffffff;
+    font-size: 50px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    padding: 5px 5px 10px 10px;
+}
+
+#carousel .carousel-item{
+    height: 800px;
+}
+#carouselMovie .carousel-caption .carousel-trailer{
+    opacity: 0;
+  
+}
+#carouselMovie .carousel-caption:hover .carousel-trailer{
+    opacity: 1;
+    transition: all;
+    
+}
+#carouselMovie .carousel-indicators {
+    bottom: 50px;
+}
+#carouselMovie .carousel-indicators button{
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    background-color: #d8d8d8;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+}
+
+#carouselMovie .carousel-indicators button.active{
+    background: #fb4226;
+}

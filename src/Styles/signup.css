@@ -1,0 +1,41 @@
+#carouselSignup .carousel-indicators button{
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    background-color: #d8d8d8;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+}
+#carouselSignup .carousel-indicators button.active{
+    background: #fb4226;
+}
+
+[class^="bi-"]::before, [class*=" bi-"]::before{
+    font-weight: bold !important;
+}
+input#rd1, input#rd2{
+    width: 50px !important;
+    height: 20px !important;
+}
+input[type=checkbox]{
+    display: block !important;
+}
+input#cb1{
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 5px;
+}
+.btn-signup {
+    border-radius: 50px;
+    color: #fff;
+    background-image: linear-gradient(to right, #08221673, #1ca36573);
+    padding: 15px;
+    cursor: pointer;
+    border: none !important;
+    margin-top: 40px
+}
+
+.btn-signup:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #1ca36573,#08221673 )
+}

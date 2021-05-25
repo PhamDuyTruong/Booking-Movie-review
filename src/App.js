@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import AppLayout from "./layouts/AppLayout";
+import ForgotPasswword from "./pages/ForgotPassword";
+import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import Movie from "./pages/Movie";
+import MovieDetail from "./pages/MovieDetail";
+import Signup from "./pages/Signup";
+import UseTerm from "./pages/useTerm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/">
+          <AppLayout>
+            <Switch>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+              <Route path="/movie">
+                <Movie />
+              </Route>
+              <Route path="/moviedetail">
+                <MovieDetail />
+              </Route>
+              <Route path="/signup">
+                  <Signup />
+              </Route>
+              <Route path="/useterm">
+                  <UseTerm />
+              </Route>
+              <Route path="/forgot">
+                  <ForgotPasswword />
+              </Route>
+              <Route>
+                <Redirect to="/"/>
+              </Route>
+            </Switch>
+          </AppLayout>
+        </Route>
+        
+      </Switch>
+     
+    </BrowserRouter>
   );
 }
 
