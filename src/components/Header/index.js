@@ -44,7 +44,7 @@ export default function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/client/movie">What's on</Link>
+              <Link to="/movie">What's on</Link>
             </li>
             <li className="nav-item">
               <Link to="/">Theaters</Link>
