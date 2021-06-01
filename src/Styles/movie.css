@@ -27,11 +27,27 @@
     width: 100%;
 }
 #showtime .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    text-transform: uppercase;
+    font-size: 25px;
     color: #fbbd61;
 }
 #showtime .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link{
-    color: #000000;
+    text-transform: uppercase;
+    font-size: 25px;
+    color: rgba(0,0,0,.55);
 }
 .card-movie{
     width: 232px !important;
+}
+.btn-detail{
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,.55) ;
+    color: #1E90FF;
+}
+.btn-detail:hover{
+    font-weight: bold;
+     border: 1px solid #fff;
+     background: #1E90FF;
+     color: #fff;
 }

@@ -41,7 +41,7 @@ export default function Carousel() {
               <div className="carousel-trailer">
                 
               <button class="btn btn-trailer">
-              <a className="venobox" data-vbtype="video" href="https://youtu.be/VTnGOjtaWAY">
+              <a className="venobox" id="firstLink" data-autoplay="true" data-vbtype="video" href="https://youtu.be/VTnGOjtaWAY">
                   <span><i className="bi bi-play-fill"></i></span>
               </a>
               </button>  
@@ -63,7 +63,7 @@ export default function Carousel() {
             <div className="carousel-trailer">
             
             <button class="btn btn-trailer">
-              <a className="venobox" data-vbtype="video" href="https://youtu.be/uqJ9u7GSaYM">
+              <a className="venobox" id="firstLink" data-autoplay="true" data-vbtype="video" href="https://youtu.be/uqJ9u7GSaYM">
                   <span><i className="bi bi-play-fill"></i></span>
               </a>
             </button>  
@@ -82,7 +82,7 @@ export default function Carousel() {
            
             <div className="carousel-trailer">
             <button class="btn btn-trailer">
-              <a className="venobox" data-vbtype="video" href="https://youtu.be/ykBfss-8H4Y">
+              <a className="venobox" id="firstLink" data-autoplay="true" data-vbtype="video" href="https://youtu.be/ykBfss-8H4Y">
                   <span>
                     <i className="bi bi-play-fill"></i>
                   </span>

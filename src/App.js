@@ -17,6 +17,7 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <Home />
+                <Movie />
               </Route>
               <Route path="/login">
                 <LoginPage />
@@ -24,7 +25,7 @@ function App() {
               <Route path="/movie">
                 <Movie />
               </Route>
-              <Route path="/moviedetail">
+              <Route path="/moviedetail/:movieId">
                 <MovieDetail />
               </Route>
               <Route path="/signup">
