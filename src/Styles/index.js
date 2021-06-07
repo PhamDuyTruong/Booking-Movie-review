@@ -9,4 +9,4 @@ import './login.css'
 import './signup.css'
 import './ForgotPassword.css'
 import './movie.css'
-
+import './detailMovie.css'

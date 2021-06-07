@@ -1,4 +1,5 @@
 
+import axios from 'axios'
 import axiosClient from './axiosClient'
 
 const movieAPI ={
@@ -9,6 +10,14 @@ const movieAPI ={
 
     getDataComingMovies:()=>{
         return axiosClient.get("/QuanLyPhim/LayDanhSachPhimTheoNgay?maNhom=GP10&soTrang=1&soPhanTuTrenTrang=20&tuNgay=06%2F08%2F2020&denNgay=31%2F05%2F2030")
+    },
+
+    getDetailMovies: (movieId) =>{
+        const params= {
+            maPhim:movieId
+            
+        }
+        return axiosClient.get("/QuanLyPhim/LayThongTinPhim?MaPhim="+params.maPhim)
     }
 
 }

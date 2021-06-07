@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getDataComingMovies } from '../../actions/movieComingAction';
 import CardMovie from '../CardMovie';
+import MovieDetail from '../MovieDetail'
 
 
 
@@ -69,12 +70,6 @@ export default function Movie() {
           dispatch(getDataComingMovies())
     }, [])
 
-  //   useEffect(() => {
-  //     return () => {
-  //         dispatch(getDataComingMovies());
-  //     }
-  // }, [])
-
   
 
     if(isLoading){
@@ -89,6 +84,8 @@ export default function Movie() {
     if(error){
         return <div>{error}</div>
     }
+
+    
 
     return (
       <div className="container mb-3" id="showtime">
@@ -132,6 +129,7 @@ export default function Movie() {
             <Slider {...settings}>
               {movies.map((item) => (
                 <CardMovie props={item}/>
+                
               ))}
             </Slider>
           </div>

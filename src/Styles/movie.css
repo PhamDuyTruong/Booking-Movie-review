@@ -41,8 +41,9 @@
 }
 .btn-detail{
     padding: 10px;
+    text-decoration: none;
     border-radius: 20px;
-    border: 1px solid rgba(0,0,0,.55) ;
+    border: 1px solid rgba(21, 101, 192, 0.71) ;
     color: #1E90FF;
 }
 .btn-detail:hover{
@@ -50,4 +51,24 @@
      border: 1px solid #fff;
      background: #1E90FF;
      color: #fff;
+}
+.detailButton{
+    position: relative;
+    overflow: hidden;
+}
+.buttonContent{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.55);
+    text-align: center;
+    padding-top: 10px;
+    width: 214px;
+    height: 50px;
+    transition: all .5s;
+    transform: translateY(50px);
+}
+.detailButton:hover .buttonContent{
+    transform: translateY(0px);
+    
 }
