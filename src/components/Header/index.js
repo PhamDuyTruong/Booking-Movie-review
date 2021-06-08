@@ -58,7 +58,7 @@ export default function Header() {
                   className="bi bi-person-circle"
                   style={{ fontSize: "30px" }}
                 ></i>
-                <span className="navbar-account" style={{ margin: "5px"}}>
+                <span className="navbar-account" style={{ margin: "5px", fontSize:"20px"}}>
                     Account
                 </span>
           

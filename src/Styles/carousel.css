@@ -17,6 +17,7 @@
     border: 1px solid #ffffff;
     border-radius: 50%;
     padding: 5px 5px 10px 10px;
+    background: rgba(0,0,0,.55);
 }
 
 #carousel .carousel-item{
@@ -26,9 +27,11 @@
     opacity: 0;
   
 }
-#carouselMovie .carousel-caption:hover .carousel-trailer{
+#carouselMovie .carousel-inner:hover .carousel-trailer{
     opacity: 1;
-    transition: all;
+    transition: all .5s;
+    transform: scale(1.2);
+    
     
 }
 #carouselMovie .carousel-indicators {
@@ -38,7 +41,7 @@
     width: 10px;
     height: 10px;
     margin-right: 5px;
-    background-color: #d8d8d8;
+    background:rgb(0,0,0,.55);
     border-radius: 50%;
     border: 1px solid #ffffff;
 }

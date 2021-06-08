@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import Movie from "./pages/Movie";
 import MovieDetail from "./pages/MovieDetail";
+import PageNotFound from "./pages/PageNotFound";
 import Signup from "./pages/Signup";
 import UseTerm from "./pages/useTerm";
 
@@ -38,7 +39,7 @@ function App() {
                   <ForgotPasswword />
               </Route>
               <Route>
-                <Redirect to="/"/>
+                <PageNotFound />
               </Route>
             </Switch>
           </AppLayout>

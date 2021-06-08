@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux";
-import {Link} from 'react-router-dom'
 import {getDataMovies} from '../../actions/movieActions'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getDataComingMovies } from '../../actions/movieComingAction';
 import CardMovie from '../CardMovie';
-import MovieDetail from '../MovieDetail'
+import PageLoading from '../pageLoading';
 
 
 
@@ -73,10 +72,30 @@ export default function Movie() {
   
 
     if(isLoading){
-        return <div>Loading...</div>
+        return (
+          <div className="container" style={{height:"850px", width:"100%", paddingTop:"200px"}}>
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-6">
+              <PageLoading></PageLoading>
+          </div>
+          <div className="col-2"></div>
+        </div>
+      </div>
+        )
     }
     if(Loading){
-      return <div>Loading...</div>
+      return (
+        <div className="container" style={{height:"850px", width:"100%", paddingTop:"200px"}}>
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-6">
+              <PageLoading></PageLoading>;
+          </div>
+          <div className="col-2"></div>
+        </div>
+      </div>
+      )
     }
     if(errorComing){
       return < div>{error}</div>
