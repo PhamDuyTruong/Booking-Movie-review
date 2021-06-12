@@ -1,0 +1,3 @@
+export const ADD_THEATERMOVIE = "ADD_THEATERMOVIE"
+
+

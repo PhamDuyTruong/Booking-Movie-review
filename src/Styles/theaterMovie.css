@@ -1,0 +1,11 @@
+.button-theater{
+    border-bottom: 1px solid #dcdcdc !important;
+}
+
+.button-theater:hover{
+    opacity: 1 !important;
+}
+
+.active, .button-theater:hover{
+    opacity: 1 !important;
+}

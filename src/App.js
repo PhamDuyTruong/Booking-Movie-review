@@ -7,6 +7,7 @@ import Movie from "./pages/Movie";
 import MovieDetail from "./pages/MovieDetail";
 import PageNotFound from "./pages/PageNotFound";
 import Signup from "./pages/Signup";
+import TheaterMovie from "./pages/theaterMovie";
 import UseTerm from "./pages/useTerm";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" exact>
                 <Home />
                 <Movie />
+                <TheaterMovie />
               </Route>
               <Route path="/login">
                 <LoginPage />
@@ -37,6 +39,9 @@ function App() {
               </Route>
               <Route path="/forgot">
                   <ForgotPasswword />
+              </Route>
+              <Route path="/theater">
+                  <TheaterMovie />
               </Route>
               <Route>
                 <PageNotFound />
