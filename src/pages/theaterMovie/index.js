@@ -12,6 +12,8 @@ export default function TheaterMovie() {
   const [active, setActive] = useState("bhd-star-cineplex-pham-hung");
   const {theaterMethod} = useSelector((state) => state.addTheater)
   const dispatch = useDispatch();
+  console.log(theaterMethod);
+  
 
   useEffect(() => {
     dispatch(getDataTheater());
@@ -24,14 +26,16 @@ export default function TheaterMovie() {
     <div>{error}</div>
   }
 
+
   const handleAddMovie =(item, maCumRap) =>{
       dispatch(addTheaterMovie(item, maCumRap))
       setActive(maCumRap)
   }
-
+  
   
 
   return (
+    
     <div
       className="container-fluid py-5"
       style={{ width: "100%", height: "650px" }}
@@ -83,7 +87,7 @@ export default function TheaterMovie() {
                                     ? item.diaChi
                                     : item.diaChi.substring(0, 20) + "..."}
                                 </p>
-                                <a
+                                <a className="theater-detail"
                                   href="#"
                                   style={{
                                     textDecoration: "none",
@@ -104,18 +108,62 @@ export default function TheaterMovie() {
             </div>
           </div>
         </div>
+        {theaterMethod.length == 0? <div className="col-md-6 col-12" style={{color:"#dcdcdc"}}>
+              Vui lòng chọn cụm rạp
+        </div> :
         <div className="col-md-6 col-12">
             {theaterMethod.map(item=>{
               return (
-                <div key={item.maPhim} className="d-flex py-4" style={{borderBottom:"1px solid #dcdcdc"}}>
+                <div key={item.maPhim} className="py-4 theater-container" style={{borderBottom:"1px solid #dcdcdc"}}>
+                  <div className="d-flex">
                   <img src={item.hinhAnh} alt ="Hình anh" style={{width:"60px", height:"60px"}}></img>
                   <div >
                       <h3 className="px-3" style={{fontSize:"20px"}}>{item.tenPhim}</h3>
+                      <div className="d-flex" style={{color:"#dcdcdc"}}>
+                        <p className="px-3">120 phút</p>
+                        <p>IMDb: 10</p>
+                      </div>
                   </div>
                 </div>
+              <div className="time">
+                  <div className="row">
+                    { (item.lstLichChieuTheoPhim && item.lstLichChieuTheoPhim.length < 7) ? item.lstLichChieuTheoPhim.map(item=>{
+                       return (
+                         
+                        <div className="col-lg-3 col-6">
+                          <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>   
+                        </div> 
+                                         
+                       )
+                    }):
+                  
+                    <>
+                      <div className="col-lg-3 col-6" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>
+                          10:10
+                      </div>
+                      <div className="col-lg-3 col-6" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>
+                          12:10
+                      </div>
+                      <div className="col-lg-3 col-6" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>
+                          14:10
+                      </div>
+                      <div className="col-lg-3 col-6" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>
+                          16:10
+                      </div>
+                      <div className="col-lg-3 col-6" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>
+                          18:10
+                      </div>
+                      <div className="col-lg-3 col-6" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>
+                          20:10
+                      </div>
+                    </>
+                    }
+                  </div>
+              </div>
+              </div>
               )
             })}
-         </div>
+         </div>}
       </div>
     </div>
   );

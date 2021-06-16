@@ -9,3 +9,12 @@
 .active, .button-theater:hover{
     opacity: 1 !important;
 }
+
+.theater-detail:hover {
+    transition: all .5s;
+    color: 	#E42217;
+    font-weight: bold;
+}
+.showtime-content{
+    border-bottom: 1px solid #dcdcdc !important;
+}

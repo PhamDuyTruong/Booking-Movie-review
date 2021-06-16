@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailMovies } from "../../actions/detailMovie";
 import PageLoading from "../pageLoading";
+import CumRapChiTiet from '../cumRapChiTiet'
 
 export default function MovieDetail(props) {
   const { movieId } = useParams();
@@ -101,6 +102,7 @@ export default function MovieDetail(props) {
   };
 
   return (
+    <>
     <div className="container-fluid detailMovie">
       <div className="detail-background">
         <img
@@ -222,5 +224,7 @@ export default function MovieDetail(props) {
         </div>
       </div>
     </div>
+    <CumRapChiTiet props={detailMovie}></CumRapChiTiet>
+  </>
   );
 }

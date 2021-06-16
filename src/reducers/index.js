@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import addTheaterMovie from "./addTheaterMovie";
 import detailMovie from "./detailMovie";
+import infoTheater from "./infoTheater";
 import movieComingReducer from "./movieComingReducer";
 import movieReducer from "./movieReducer";
+import showtimeReducer from "./showtimeReducer";
 import theaterMovie from "./theaterMovie";
 
 const rootReducer = combineReducers({
@@ -10,7 +12,9 @@ const rootReducer = combineReducers({
     movieComing: movieComingReducer,
     detailMovie: detailMovie,
     theaterMovie: theaterMovie,
-    addTheater: addTheaterMovie
+    addTheater: addTheaterMovie,
+    info: infoTheater,
+    showtime: showtimeReducer
 })
 
 
