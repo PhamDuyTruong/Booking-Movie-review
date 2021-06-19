@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { getInfoTheater } from '../../actions/infoTheater';
 import { addShowtimeMovie } from '../../actions/showtimeAction';
-
+import CategoryDate from '../CategoryDate'
 
 export default function CumRapChiTiet({props}) {
    
     const {infoTheater, error} = useSelector((state) => state.info);
-    const {showtimeItem} = useSelector((state) => state.showtime)
+    const {showtimeItem} = useSelector((state) => state.showtime);
     const [active, setActive] = useState("BHDStar")
     const dispatch = useDispatch();
     useEffect(() => {
@@ -16,31 +16,17 @@ export default function CumRapChiTiet({props}) {
     if(error){
         <div>{error}</div>
     }
-  
-    console.log(showtimeItem);
-
 
     const handleShowtimes = (item,id) =>{
         console.log(id);
-        dispatch(addShowtimeMovie(item, id));
+          dispatch(addShowtimeMovie(item, id));
         setActive(id)
 
     }
-    function deduplicate(arr) {
-        let isExist = (arr, x) => {
-          for(let i = 0; i < arr.length; i++) {
-            if (arr[i].thongTinRap.tenCumRap === x.thongTinRap.tenCumRap) return true;
-          }
-          return false;
-        }
-      
-        let newShowtime = [];
-        arr.forEach(element => {
-          if(!isExist(newShowtime, element)) newShowtime.push(element);
-        });
-        return newShowtime;
-      }
-
+    let newNgay =[];
+     function pushNgay (item) {
+       newNgay.push(item)
+     }
       function getday(item){
           let ngay = new Date(item);
           let thu = ngay.getDay();
@@ -50,7 +36,7 @@ export default function CumRapChiTiet({props}) {
 
     return (
       <div className="container-fluid py-3">
-        <div className="row" style={{ width: "100%", height: "750px" }}>
+        <div className="row" style={{ width: "100%", height: "750px", overflowY:"scroll" }}>
           <div className="col-md-5 col-12">
             {infoTheater.map((info) => {
               return (
@@ -84,7 +70,7 @@ export default function CumRapChiTiet({props}) {
               );
             })}
           </div>
-          <div className="col-md-7 col-12 pt-4">
+          {showtimeItem && showtimeItem.length ==0 ? <div className="col-md-7 col-12 pt-4"><p style={{color:"#dcdcdc", fontWeight:"bold", fontSize:"20px"}}>Vui lòng chọn cụm rạp </p></div>: <div className="col-md-7 col-12 pt-4">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
               <li className="nav-item " role="presentation">
                 <a
@@ -95,7 +81,7 @@ export default function CumRapChiTiet({props}) {
                   role="tab"
                   aria-controls="home"
                   aria-selected="true"
-                  style={{ marginRight: "10px" }}
+                  style={{ marginRight: "5px", fontSize:"20px" }}
                 >
                   Thứ 2
                 </a>
@@ -109,8 +95,79 @@ export default function CumRapChiTiet({props}) {
                   role="tab"
                   aria-controls="profile"
                   aria-selected="false"
+                  style={{ marginRight: "5px", fontSize:"20px" }}
                 >
                   Thứ 3
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Wed-tab"
+                  data-bs-toggle="tab"
+                  href="#Wed"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize:"20px" }}
+                >
+                  Thứ 4
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Thu-tab"
+                  data-bs-toggle="tab"
+                  href="#Thu"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize:"20px" }}
+                >
+                  Thứ 5
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Fri-tab"
+                  data-bs-toggle="tab"
+                  href="#Fri"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize:"20px" }}
+                >
+                  Thứ 6
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Sat-tab"
+                  data-bs-toggle="tab"
+                  href="#Sat"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize:"20px" }}
+                >
+                  Thứ 7
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Sun-tab"
+                  data-bs-toggle="tab"
+                  href="#Sun"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize:"20px" }}
+                >
+                  Chủ nhật
                 </a>
               </li>
             </ul>
@@ -122,33 +179,147 @@ export default function CumRapChiTiet({props}) {
                 aria-labelledby="home-tab"
               >
                 {showtimeItem.map((item) => {
-                    if(getday(item.ngayChieuGioChieu.substring(0,10))==1){
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==1){
+                   
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))}
+                     return (
+                      <>
+                        <CategoryDate item={item} ngay={newNgay}/>
+                      </>
+                     
+                    );
+                    
+                  }
+                  
+                })}
+                
+              </div>
+              <div
+              className="tab-pane fade"
+              id="Tue"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              >
+                  {showtimeItem.map((item, index) => {
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==2){
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))}
+                  }
+                    if(getday(item.ngayChieuGioChieu.substring(0,10))==2 && index ==0){  
                             return (
-                                <button
-                                  className="d-flex pt-2 showtime-content"
-                                  style={{
-                                    border: "none",
-                                    background: "#fff",
-                                    height: "135px",
-                                  }}
-                                >
-                                  <img
-                                    src="../img/bhd-star-discovery.png"
-                                    alt="Hình ảnh"
-                                    style={{ width: "70px", height: "70px" }}
-                                  ></img>
-                                  <div className="showtime-detail">
-                                    <h3 className="px-2" style={{ fontSize: "22px" }}>
-                                      {item.thongTinRap.tenCumRap}
-                                    </h3>
-                                  </div>
-                                </button>
+                                <>
+                                  <CategoryDate item={item} ngay={newNgay}/>
+                                </>
+                               
                               );
                     }
-                })}
+                  })}
               </div>
-            </div>
-          </div>
+              <div
+              className="tab-pane fade"
+              id="Wed"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              >
+                {showtimeItem.map((item) => {
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==3){
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))}
+               
+                  }
+                    if(getday(item.ngayChieuGioChieu.substring(0,10))==3){  
+                            return (
+                                <>
+                                  <CategoryDate item={item} ngay={newNgay}/>
+                                </>
+                               
+                              );
+                    }
+                  })}
+              </div>
+              <div
+              className="tab-pane fade"
+              id="Thu"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              >
+                  {showtimeItem.map((item, index) => {
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==4){
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))}
+                
+                  }
+                    if(getday(item.ngayChieuGioChieu.substring(0,10))==4){  
+                            return (
+                                <>
+                                  <CategoryDate item={item} ngay={newNgay}/>
+                                </>
+                               
+                              );
+                    }
+                  })}
+              </div>
+              <div
+              className="tab-pane fade"
+              id="Fri"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              >
+                  {showtimeItem.map((item, index) => {
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==5){
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))}
+                 
+                  }
+                    if(getday(item.ngayChieuGioChieu.substring(0,10))==5){  
+                            return (
+                                <>
+                                  <CategoryDate item={item} ngay={newNgay}/>
+                                </>
+                               
+                              );
+                    }
+                  })}
+              </div>
+              <div
+              className="tab-pane fade"
+              id="Sat"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              >
+                  {showtimeItem.map((item, index) => {
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==6){
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))
+                    }
+                  }
+                    if(getday(item.ngayChieuGioChieu.substring(0,10))==6){  
+                            return (
+                                <>
+                                  <CategoryDate item={item} ngay={newNgay} />
+                                </>
+                               
+                              );
+                    }
+                  })}
+              </div>
+              <div
+              className="tab-pane fade"
+              id="Sun"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              >
+                  {showtimeItem.map((item, index) => {
+                  if(getday(item.ngayChieuGioChieu.substring(0,10))==0){
+                     {pushNgay(item.ngayChieuGioChieu.substring(11,16))}
+                  }
+                    if(getday(item.ngayChieuGioChieu.substring(0,10))==0){  
+                            return (
+                                <>
+                                  <CategoryDate item={item} ngay={newNgay}/>
+                                </>
+                               
+                              );
+                    }
+                  })}
+              </div>
+            </div> 
+          </div>}
         </div>
       </div>
     );

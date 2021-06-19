@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     theaterMovie: theaterMovie,
     addTheater: addTheaterMovie,
     info: infoTheater,
-    showtime: showtimeReducer
+    showtime: showtimeReducer,
 })
 
 
