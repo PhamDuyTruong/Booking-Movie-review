@@ -13,7 +13,7 @@ export function loginAction(value) {
       const { data } = await authAPI.login(value);
       dispatch({ type: LOGIN_SUCCESS, payload: { data } });
       Swal.fire(
-        'Logged successfully !',
+        'Login successfully !',
         'Wish you have a happy experience at TIX !',
         'success'
       )
