@@ -6,6 +6,7 @@ import movieComingReducer from "./movieComingReducer";
 import movieReducer from "./movieReducer";
 import showtimeReducer from "./showtimeReducer";
 import theaterMovie from "./theaterMovie";
+import loginReducer from "./loginReducer";
 
 const rootReducer = combineReducers({
     movie: movieReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     addTheater: addTheaterMovie,
     info: infoTheater,
     showtime: showtimeReducer,
+    login: loginReducer,
 })
 
 

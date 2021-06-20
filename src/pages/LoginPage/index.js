@@ -1,12 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginAction } from "../../actions/loginAction";
+import * as yup from "yup";
+
+// Tạo schame validation
+const schema = yup.object().shape({
+  taiKhoan: yup.string().required("Account can not be blank"),
+  matKhau: yup.string().required("Password can not be blank"),
+});
+
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
+
+  const handleLogin = (value) => {
+    dispatch(loginAction(value));
+  };
+
   return (
     <div
       className="login-background"
       style={{
         width: "100%",
-        height: "850px",
         backgroundImage: "url('./img/backapp.jpg')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
@@ -15,14 +40,18 @@ export default function LoginPage() {
     >
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 col-md-2"></div>
-          <div className="col-lg-8 col-md-8">
-            <div
-              className="card card1"
-              style={{ width: "500px", height: "680px" }}
-            >
+          <div
+            className="col-12"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "40px",
+            }}
+          >
+            <form className="cardLogin" onSubmit={handleSubmit(handleLogin)}>
               <div className="row justify-content-center my-auto">
-                <div className="col-md-8 col-10 my-5">
+                <div className="col-md-8 col-10">
                   <div className="row justify-content-center px-3 mb-3">
                     {" "}
                     <img
@@ -31,7 +60,7 @@ export default function LoginPage() {
                       style={{ width: "60px", height: "100%" }}
                     />{" "}
                   </div>
-                  <h6 className="msg-info">Please login to your account</h6>
+                  <h6 className="text-center">Please login to your account</h6>
                   <div className="form-group">
                     {" "}
                     <label className="form-control-label text-muted">
@@ -41,9 +70,15 @@ export default function LoginPage() {
                       type="text"
                       id="email"
                       name="email"
-                      placeholder="Phone or email id"
+                      placeholder="Phone or email"
                       className="form-control"
+                      {...register("taiKhoan")}
                     />{" "}
+                    {errors.taiKhoan && (
+                      <div className="alert alert-danger mt-3">
+                        {errors.taiKhoan.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-group">
                     {" "}
@@ -56,11 +91,19 @@ export default function LoginPage() {
                       name="psw"
                       placeholder="Password"
                       className="form-control"
+                      {...register("matKhau")}
                     />{" "}
+                    {errors.matKhau && (
+                      <div className="alert alert-danger mt-3">
+                        {errors.matKhau.message}
+                      </div>
+                    )}
                   </div>
-                  <div className="row justify-content-center my-3 px-3">
+                  <div className="row justify-content-center px-3">
                     {" "}
-                    <button className="btn-block btn-color">Login</button>{" "}
+                    <button className="btn-block btn-color" type="submit">
+                      Login
+                    </button>{" "}
                   </div>
                   <div className="row justify-content-center my-2">
                     {" "}
@@ -70,7 +113,7 @@ export default function LoginPage() {
                   </div>
                 </div>
               </div>
-              <div className="bottom text-center mb-5">
+              <div className="bottom text-center">
                 <p href="#" className="sm-text mx-auto mb-3 mr-3">
                   Don't have an account?
                   <button
@@ -87,7 +130,7 @@ export default function LoginPage() {
                   </button>
                 </p>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
