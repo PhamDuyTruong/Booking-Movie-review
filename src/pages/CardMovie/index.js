@@ -1,8 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getDetailMovies } from "../../actions/detailMovie";
-
-import MovieDetail from "../MovieDetail";
 export default function CardMovie({ props }) {
   return (
     <>

@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import addTheaterMovie from "./addTheaterMovie";
 import detailMovie from "./detailMovie";
+import sysTheaterMovie from "./infoSysTheater";
 import infoTheater from "./infoTheater";
 import movieComingReducer from "./movieComingReducer";
 import movieReducer from "./movieReducer";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     addTheater: addTheaterMovie,
     info: infoTheater,
     showtime: showtimeReducer,
+    sysTheaterMovie
 })
 
 
