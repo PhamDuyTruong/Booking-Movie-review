@@ -22,6 +22,11 @@ export function loginAction(value) {
         type: LOGIN_FAILURE,
         payload: { error: error.response.data },
       });
+      Swal.fire(
+        'Login failed !',
+        'Please try to login again !',
+        'error'
+      )
     }
   };
 }
