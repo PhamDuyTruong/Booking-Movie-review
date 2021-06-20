@@ -9,6 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Signup from "./pages/Signup";
 import TheaterMovie from "./pages/theaterMovie";
 import UseTerm from "./pages/useTerm";
+import SysTheaterDetail from "./pages/SysTheaterDetail";
 
 function App() {
   return (
@@ -42,6 +43,9 @@ function App() {
               </Route>
               <Route path="/theater">
                   <TheaterMovie />
+              </Route>
+              <Route path="/theaterdetail/:theaterId">
+                 <SysTheaterDetail />
               </Route>
               <Route>
                 <PageNotFound />

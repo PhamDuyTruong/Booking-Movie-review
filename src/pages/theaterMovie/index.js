@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { addTheaterMovie } from "../../actions/addTheaterMovie";
 import { getDataTheater } from "../../actions/theaterMovieAction";
 import PageLoading from "../pageLoading";
@@ -13,7 +14,7 @@ export default function TheaterMovie() {
   const {theaterMethod} = useSelector((state) => state.addTheater)
   const dispatch = useDispatch();
   console.log(theaterMethod);
-  
+  console.log(theater);
 
   useEffect(() => {
     dispatch(getDataTheater());
@@ -46,13 +47,16 @@ export default function TheaterMovie() {
             <div className="col-2 logo">
               {theater.map((item) => {
                 return (
-                  <div key={item.maCumRap} style={{ height: "70px" }}>
-                    <img
-                      src={item.logo}
-                      alt="Hình ảnh"
-                      style={{ width: "50px", height: "50px" }}
-                    />
-                  </div>
+                  <button className="logo-theater" key={item.maCumRap} style={{ height: "70px",  border:"none", background:"#fff", opacity:".5"  }}>
+                    <Link  to={`/theaterdetail/${item.maHeThongRap}`}>
+                    
+                      <img
+                        src={item.logo}
+                        alt="Hình ảnh"
+                        style={{ width: "50px", height: "50px"}}
+                      />
+                    </Link>
+                  </button>
                 );
               })}
             </div>
