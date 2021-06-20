@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -39,9 +39,7 @@ export default function Header() {
         <div className="collapse navbar-collapse" id="navbarMovie">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to="/">
-                  Home
-              </Link>
+              <Link to="/">Home</Link>
             </li>
             <li className="nav-item">
               <Link to="/movie">What's on</Link>
@@ -52,38 +50,39 @@ export default function Header() {
             <li className="nav-item">
               <Link to="/">News</Link>
             </li>
-            <li className="nav-item navAdd"  >
+            <li className="nav-item navAdd">
               <Link to="/login">
                 <i
                   className="bi bi-person-circle"
                   style={{ fontSize: "30px" }}
                 ></i>
-                <span className="navbar-account" style={{ margin: "5px", fontSize:"20px"}}>
-                    Account
+                <span
+                  className="navbar-account"
+                  style={{ margin: "5px", fontSize: "20px" }}
+                >
+                  Account
                 </span>
-          
               </Link>
             </li>
-            <li className="nav-account" >
+            <li className="nav-account">
               <Link
                 to="/login"
                 style={{
                   position: "absolute",
-                  textDecoration:"none",
+                  textDecoration: "none",
                   top: "5px",
                   right: "15px",
                   color: "rgba(0,0,0,.55)",
                   cursor: "pointer",
                 }}
               >
-              
                 <i
                   className="bi bi-person-circle"
                   style={{ fontSize: "30px" }}
                 ></i>
-                
-                <span className="navbar-account" style={{ margin: "5px"}}>
-                    Account
+
+                <span className="navbar-account" style={{ margin: "5px" }}>
+                  Account
                 </span>
               </Link>
             </li>
