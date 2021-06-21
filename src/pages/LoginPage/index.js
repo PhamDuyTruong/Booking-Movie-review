@@ -53,27 +53,25 @@ export default function LoginPage() {
               <div className="row justify-content-center my-auto">
                 <div className="col-md-8 col-10">
                   <div className="row justify-content-center px-3 mb-3">
-                    {" "}
                     <img
                       id="logo"
                       src="./img/web-logo.png"
                       style={{ width: "60px", height: "100%" }}
-                    />{" "}
+                    />
                   </div>
                   <h6 className="text-center">Please login to your account</h6>
                   <div className="form-group">
-                    {" "}
                     <label className="form-control-label text-muted">
-                      Username
-                    </label>{" "}
+                      Account
+                    </label>
                     <input
                       type="text"
                       id="email"
                       name="email"
-                      placeholder="Phone or email"
+                      placeholder="Account"
                       className="form-control"
                       {...register("taiKhoan")}
-                    />{" "}
+                    />
                     {errors.taiKhoan && (
                       <div className="alert alert-danger mt-3">
                         {errors.taiKhoan.message}
@@ -81,10 +79,9 @@ export default function LoginPage() {
                     )}
                   </div>
                   <div className="form-group">
-                    {" "}
                     <label className="form-control-label text-muted">
                       Password
-                    </label>{" "}
+                    </label>
                     <input
                       type="password"
                       id="psw"
@@ -92,7 +89,7 @@ export default function LoginPage() {
                       placeholder="Password"
                       className="form-control"
                       {...register("matKhau")}
-                    />{" "}
+                    />
                     {errors.matKhau && (
                       <div className="alert alert-danger mt-3">
                         {errors.matKhau.message}
@@ -100,16 +97,14 @@ export default function LoginPage() {
                     )}
                   </div>
                   <div className="row justify-content-center px-3">
-                    {" "}
                     <button className="btn-block btn-color" type="submit">
                       Login
-                    </button>{" "}
+                    </button>
                   </div>
                   <div className="row justify-content-center my-2">
-                    {" "}
                     <Link to="/forgot" className="text-center">
                       <small className="text-muted">Forgot Password?</small>
-                    </Link>{" "}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -124,7 +119,6 @@ export default function LoginPage() {
                       to="/signup"
                       style={{ textDecoration: "none", color: "#fff" }}
                     >
-                      {" "}
                       Create New
                     </Link>
                   </button>
