@@ -98,7 +98,7 @@ export default function TheaterMovie() {
                                     color: "#fb4226",
                                   }}
                                 >
-                                  Chi tiết
+                                  Liên hệ Tix
                                 </a>
                               </div>
                             </button>
