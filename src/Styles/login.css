@@ -38,9 +38,10 @@ button:focus {
     border: none
 }
 
-.card1 {
+.cardLogin {
+    padding: 20px;
+    background-color: white;
     width: 50%;
-    padding: 40px 30px 10px 30px
 }
 ::placeholder {
     color: #000 !important;
@@ -60,10 +61,10 @@ button:focus {
     margin-left: 15px
 }
 
-.msg-info {
+/* .msg-info {
     padding-left: 15px;
     margin-bottom: 30px
-}
+} */
 .btn-color {
     border-radius: 50px;
     color: #fff;
@@ -71,7 +72,7 @@ button:focus {
     padding: 15px;
     cursor: pointer;
     border: none !important;
-    margin-top: 40px
+    margin-top: 20px
 }
 
 .btn-color:hover {
@@ -88,7 +89,6 @@ a:hover {
 
 .bottom {
     width: 100%;
-    margin-top: 50px !important
 }
 
 .sm-text {
@@ -96,6 +96,16 @@ a:hover {
 }
 
 /* Media Query */
+@media screen and (max-width: 576px) {
+    .cardLogin{
+        width: 80% !important;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 768px){
+    .cardLogin{
+        width: 100% !important;
+    }
+}
 @media screen and (max-width: 800px) {
     .card{
         position: relative;
