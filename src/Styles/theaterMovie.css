@@ -18,3 +18,10 @@
 .showtime-content{
     border-bottom: 1px solid #dcdcdc !important;
 }
+.logo-theater{
+    transition: all .5s;
+}
+.logo-theater:hover{
+    opacity: 1 !important;
+    transform: scale(1.1,1.1)
+}
