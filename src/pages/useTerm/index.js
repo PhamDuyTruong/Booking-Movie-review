@@ -61,7 +61,7 @@ export default function UseTerm() {
                 <li>
                   - Tính năng đặt vé trực tuyến hiện chỉ áp dụng cho thành viên
                   của CGV. Vui lòng tham khảo thông tin đăng ký thành viên trên
-                  website{" "}
+                  website
                   <a href="https://www.cgv.vn/" target="_blank">
                     www.cgv.vn
                   </a>
@@ -408,7 +408,7 @@ export default function UseTerm() {
               <p>
                 Xin quý khách lưu ý chỉ mua hàng khi chấp nhận và hiểu rõ những
                 quy định trên. Nếu cần hỗ trợ thêm thông tin, quý khách vui lòng
-                tham khảo tại{" "}
+                tham khảo tại
                 <a href="https://www.cgv.vn/" target="_blank">
                   www.cgv.vn
                 </a>

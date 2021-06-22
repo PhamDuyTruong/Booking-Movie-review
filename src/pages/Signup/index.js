@@ -1,108 +1,210 @@
-import React from "react";
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signupAction } from "../../actions/signupAction";
+import * as yup from "yup";
+
+// Regex phone number
+const regexVNPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
+
+// Tạo schame validation
+const schema = yup.object().shape({
+  account: yup.string().required("Account can not be blank !"),
+  fullName: yup.string().required("Name can not be blank !"),
+  email: yup
+    .string()
+    .required("Email can not be blank !")
+    .email("Email has wrong format !"),
+  phone: yup
+    .string()
+    .required("Phone can not be blank !")
+    .matches(regexVNPhoneNumber, "Phone has wrong format !"),
+  password: yup.string().required("Password can not be blank !"),
+  retypePassword: yup
+    .string()
+    .required("Phone can not be blank !")
+    .oneOf([yup.ref("password"), null], "Password does not match"),
+});
 
 export default function Signup() {
+  // Create variable dispatch and useSelector signup
+  const dispatch = useDispatch();
+  const { error } = useSelector((state) => state.signup);
+
+  // Handle form here
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
+
+  // Handle CheckBox
+  const [isChecked, setIsChecked] = useState(false);
+  const handleChangeCheckBox = () => {
+    setIsChecked((isChecked) => !isChecked);
+  };
+
+  // Handle SignUp and dispatch action SignUp
+  const handleSignUp = (value) => {
+    // ObjSignUp is a object when call API and dispatch this obj for BE
+    const ObjSignUp = {
+      taiKhoan: value.account,
+      matKhau: value.password,
+      email: value.email,
+      soDt: value.phone,
+      maNhom: "GP10",
+      maLoaiNguoiDung: "KhachHang",
+      hoTen: value.fullName,
+    };
+    console.log("value", value);
+    console.log("ObjSignUp", ObjSignUp);
+    // check is true -> dispatch action
+    if (isChecked) {
+      dispatch(signupAction(ObjSignUp));
+    }
+  };
+
   return (
     <div className="container-fluid" style={{ backgroundColor: "#fdfcf0" }}>
       <div className="row">
-        <div className="col-6">
+        <form className="col-5" onSubmit={handleSubmit(handleSignUp)}>
           <h3 className="mb-3 text-danger text-center">Registration Form</h3>
           <div className="form-group">
-            {" "}
-            <label className="form-control-label text-muted">
-              Full Name
-            </label>{" "}
+            <label className="form-control-label text-muted">Account</label>
+            <input
+              type="text"
+              id="account"
+              name="account"
+              placeholder="Account"
+              className="form-control"
+              {...register("account")}
+            />
+            {errors.account && (
+              <div className="alert alert-danger mt-3">
+                {errors.account.message}
+              </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label className="form-control-label text-muted">Full Name</label>
             <input
               type="text"
               id="name"
               name="name"
               placeholder="Full Name"
               className="form-control"
-            />{" "}
+              {...register("fullName")}
+            />
+            {errors.fullName && (
+              <div className="alert alert-danger mt-3">
+                {errors.fullName.message}
+              </div>
+            )}
           </div>
           <div className="form-group">
-            {" "}
-            <label className="form-control-label text-muted">Email</label>{" "}
+            <label className="form-control-label text-muted">Email</label>
             <input
               type="text"
               id="email"
               name="email"
               placeholder="Email"
               className="form-control"
-              required
-            />{" "}
+              {...register("email")}
+            />
+            {errors.email && (
+              <div className="alert alert-danger mt-3">
+                {errors.email.message}
+              </div>
+            )}
           </div>
           <div className="form-group">
-            {" "}
-            <label className="form-control-label text-muted">Phone</label>{" "}
+            <label className="form-control-label text-muted">Phone</label>
             <input
               type="text"
               id="phone"
               name="phone"
               placeholder="Phone"
               className="form-control"
-            />{" "}
-          </div>
-          <div className="input_field radio_option mb-3">
-            <label className="form-control-label text-muted">Gender</label>
-            <div className="d-flex">
-              <input type="radio" name="radiogroup1" id="rd1" />
-              <label htmlFor="rd1" style={{ marginRight: "20px" }}>
-                Male
-              </label>
-              <input
-                type="radio"
-                name="radiogroup1"
-                id="rd2"
-                style={{ marginRight: "0.16em" }}
-              />
-              <label htmlFor="rd2">Female</label>
-            </div>
+              {...register("phone")}
+            />
+            {errors.phone && (
+              <div className="alert alert-danger mt-3">
+                {errors.phone.message}
+              </div>
+            )}
           </div>
           <div className="form-group">
-            {" "}
-            <label className="form-control-label text-muted">
-              Birthday
-            </label>{" "}
-            <input
-              type="date"
-              id="birthday"
-              name="birthday"
-              className="form-control"
-              required
-            />{" "}
-          </div>
-
-          <div className="form-group">
-            {" "}
-            <label className="form-control-label text-muted">
-              Password
-            </label>{" "}
+            <label className="form-control-label text-muted">Password</label>
             <input
               type="password"
               id="psw"
               name="psw"
               placeholder="Password"
               className="form-control"
-              required
-            />{" "}
+              {...register("password")}
+            />
+            {errors.password && (
+              <div className="alert alert-danger mt-3">
+                {errors.password.message}
+              </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label className="form-control-label text-muted">
+              Retype Password
+            </label>
+            <input
+              type="password"
+              id="psw"
+              name="psw"
+              placeholder="Retype Password"
+              className="form-control"
+              {...register("retypePassword")}
+            />
+            {errors.retypePassword && (
+              <div className="alert alert-danger mt-3">
+                {errors.retypePassword.message}
+              </div>
+            )}
           </div>
           <div className="input_field checkbox_option mt-3">
-                <div className="d-flex">
-                    <input type="checkbox" id="cb1" />
-                    <label htmlFor="cb1">I agree with <Link to="/useterm" style={{textDecoration:"none",color:"#fb4226" }}>terms and conditions</Link></label>
-                </div>
+            <div className="d-flex">
+              <input
+                type="checkbox"
+                id="cb1"
+                defaultChecked={isChecked}
+                onChange={handleChangeCheckBox}
+              />
+              <label htmlFor="cb1">
+                I agree with
+                <Link
+                  to="/useterm"
+                  style={{ textDecoration: "none", color: "#fb4226" }}
+                >
+                  terms and conditions
+                </Link>
+              </label>
             </div>
-            <div className="row justify-content-center my-3 px-3">
-                      {" "}
-                <button className="btn-block btn-signup">
-                    Sign Up
-                </button>{" "}
+          </div>
+          {!isChecked && (
+            <div className="alert alert-danger mt-3">
+              Please accept the terms to register account !
             </div>
-        </div>
-       
+          )}
+          {error && <div className="alert alert-danger mt-3">{error}</div>}
+          <div className="row justify-content-center my-3 px-3">
+            <button className="btn-block btn-signup" type="submit">
+              Sign Up
+            </button>
+          </div>
+        </form>
 
-        <div className="col-6">
+        <div className="col-7">
           <div
             id="carouselSignup"
             className="carousel slide"
@@ -129,7 +231,7 @@ export default function Signup() {
                   className="d-block w-100"
                   src="./img/thanhvien1.jpg"
                   alt="Thành viên 1"
-                  style={{ width: "150px", height: "620px" }}
+                  style={{ width: "150px", height: "600px" }}
                 />
               </div>
               <div className="carousel-item">
@@ -178,6 +280,6 @@ export default function Signup() {
           </div>
         </div>
       </div>
-</div>
+    </div>
   );
 }
