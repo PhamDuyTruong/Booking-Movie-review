@@ -11,6 +11,7 @@ import loginReducer from "./loginReducer";
 import signupReducer from "./signupReducer";
 import addSysMovieReducer from "./addSysMovie";
 import handleDetailReducer from "./HandleButtonReducer";
+import ticketMovie from "./TicketReducer";
 
 const rootReducer = combineReducers({
   movie: movieReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   signup: signupReducer,
   addSysMovie: addSysMovieReducer,
   button: handleDetailReducer,
+  ticket: ticketMovie
 });
 
 export default rootReducer;

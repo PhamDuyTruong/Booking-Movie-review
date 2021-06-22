@@ -12,7 +12,7 @@ const theaterAPI ={
             maHeThongRap: theaterId,
             maNhom: "GP10"
         }
-        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap="+ params.maHeThongRap)
+        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap="+ params.maHeThongRap +"&maNhom=GP10")
     }
 }
 

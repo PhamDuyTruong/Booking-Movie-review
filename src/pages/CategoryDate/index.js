@@ -1,21 +1,7 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom'
 
 export default function CategoryDate({item, ngay}) {
-    let day = deduplicate(ngay)
-    function deduplicate(arr) {
-        let isExist = (arr, x) => {
-          for(let i = 0; i < arr.length; i++) {
-            if (arr[i] === x) return true;
-          }
-          return false;
-        }
-      
-        let ans = [];
-        arr.forEach(element => {
-          if(!isExist(ans, element)) ans.push(element);
-        });
-        return ans;
-      }
     return (
       <>
         <button
@@ -27,18 +13,20 @@ export default function CategoryDate({item, ngay}) {
             height: "135px",
           }}
         >
-          <img
-            src="../img/bhd-star-discovery.png"
-            alt="Hình ảnh"
-            style={{ width: "70px", height: "70px" }}
-          ></img>
-          
-          <div className="showtime-detail">
+         
+            <img
+              src="../img/bhd-star-discovery.png"
+              alt="Hình ảnh"
+              style={{ width: "70px", height: "70px" }}
+             ></img>
+          <Link to={`/theaterdetail/${item.thongTinRap.maHeThongRap}`} style={{textDecoration:"none"}}>
+            <div className="showtime-detail">
                 <h3 className="px-2" style={{ fontSize: "22px" }}>
                 {item.thongTinRap.tenCumRap}
               </h3>
               <p className="px-2" style={{fontSize:"15px", color:"#dcdcdc"}}>Ngày chiếu: {item.ngayChieuGioChieu.substring(8, 10)}-{item.ngayChieuGioChieu.substring(5,7)}-{item.ngayChieuGioChieu.substring(0,4)}</p>
-          </div>
+            </div>
+          </Link>
         </button>
         <div className="cumRap-time" style={{borderBottom:"1px solid #dcdcdc"}}>
           <div className="row">

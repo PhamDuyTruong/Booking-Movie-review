@@ -11,7 +11,6 @@ export default function MovieDetail(props) {
     (state) => state.detailMovie
   );
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getDetailMovies(movieId));
   }, [movieId]);
@@ -31,6 +30,10 @@ export default function MovieDetail(props) {
   }
   if (error) {
     <div>{error}</div>;
+  }
+  const scrollHeight = () =>{
+
+    window.scrollTo(0, 600)
   }
   const handleStar = (score) => {
     if (score > 0 && score <= 2) {
@@ -188,7 +191,7 @@ export default function MovieDetail(props) {
             <div className="col-8 d-flex">
               <button className="detail-trailer btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Xem Trailer</button>
 
-              <button className="detail-ticket btn">Mua Vé</button>
+              <button className="detail-ticket btn" onClick={scrollHeight}>Mua Vé</button>
             </div>
             <div className="col-4"></div>
           </div>
