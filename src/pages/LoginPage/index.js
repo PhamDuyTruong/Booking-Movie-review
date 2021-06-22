@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import {useForm} from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginAction } from "../../actions/loginAction";
 import * as yup from "yup";

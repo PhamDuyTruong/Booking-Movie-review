@@ -9,10 +9,11 @@ const theaterAPI ={
     },
     getInfoSystemTheater:(theaterId) =>{
         const params={
-            maHeThongRap:theaterId
+            maHeThongRap: theaterId,
+            maNhom: "GP10"
         }
-        return axiosClient.get("/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap="+params.maHeThongRap)
+        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap="+ params.maHeThongRap)
     }
 }
 
-export default theaterAPI;
+export default theaterAPI; 
