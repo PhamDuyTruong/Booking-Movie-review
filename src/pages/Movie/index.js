@@ -147,8 +147,8 @@ export default function Movie() {
           aria-labelledby="home-tab"
         >
           <Slider {...settings}>
-            {movies.map((item) => (
-              <CardMovie props={item} />
+            {movies.map((item, index) => (
+              <CardMovie key={index} props={item} />
             ))}
           </Slider>
         </div>
@@ -160,8 +160,8 @@ export default function Movie() {
           aria-labelledby="profile-tab"
         >
           <Slider {...settings}>
-            {moviesComing.map((item) => (
-              <CardMovie props={item} />
+            {moviesComing.map((item, index) => (
+              <CardMovie key={index} props={item} />
             ))}
           </Slider>
         </div>

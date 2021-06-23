@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { addSysMovie } from '../../actions/addSysMovieAction';
 import { handleButton } from '../../actions/handleDetailButton';
 import { getInfoSystemTheater } from '../../actions/infoSystemTheaterAction';
@@ -16,17 +16,17 @@ export default function SysTheaterDetail(props) {
     useEffect(() => {
         dispatch(getInfoSystemTheater(theaterId))
     }, [theaterId]);
-    console.log(sysTheater);
+    // console.log(sysTheater);
     const handleDetailButton =(ten, diaChi) =>{
         dispatch(handleButton(ten, diaChi))
     }
 
-    console.log(name);
+    // console.log(name);
     const handleAddSysMovie =(item, id)=>{
         dispatch(addSysMovie(item, id))
         setActive(id)
     }
-    console.log(SystemMovie);
+    // console.log(SystemMovie);
 
     if (Loading) {
         return (
@@ -44,6 +44,13 @@ export default function SysTheaterDetail(props) {
       if (error) {
         <div>{error}</div>;
       }
+
+      function getday(item){
+        let ngay = new Date(item);
+        let thu = ngay.getDay();
+
+        return thu
+    }
     return (
       <>
       {name == null && address == null ? <div className="sysTheater-background" style={{position:"relative"}}>
@@ -85,7 +92,17 @@ export default function SysTheaterDetail(props) {
                   </div>
               </div>
               <div className="col-lg-6 col-md-4">
-
+                    <h3 style={{color:"#fff"}}>Đánh giá</h3>
+                    <div className="theaterRate" style={{background:"rgba(0,0,0,.5)",border:"3px solid #00DC00", borderRadius:"50%", width:"100px", height:"100px"}}>
+                        <p style={{fontWeight:"bold", color:"#fff", fontSize:"30px", padding:"25px"}}>8.5</p>
+                        <div className="d-flex">
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
               </div>
             </div>
         </div>
@@ -122,7 +139,6 @@ export default function SysTheaterDetail(props) {
                                 {item.tenCumRap}
                               </h5>
                               <p style={{ color: "#dcdcdc" }}>
-                                {" "}
                                 {item.diaChi.length < 6
                                   ? item.diaChi
                                   : item.diaChi.substring(0, 20) + "..."}
@@ -170,6 +186,153 @@ export default function SysTheaterDetail(props) {
                               >
                                 <p className="px-3">120 phút</p>
                                 <p>IMDb: 10</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T2: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==1){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                    <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                      <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold", textDecoration:"none"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                    </Link>
+                                  </div>
+                                  )
+                                }})}
+
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T3: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==2){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6">
+                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                    </Link>
+                                  </div>
+                                  )
+                                }})}
+
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T4: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==3){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                      </Link>
+                                  </div>
+                                  )
+                                }})}
+
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T5: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==4){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                    <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                    </Link>
+                                  </div>
+                                  )
+                                }})}
+
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T6: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==5){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6">
+                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                     </Link>
+                                  </div>
+                                  )
+                                }})}
+
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T7: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==6){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                    <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                    </Link>
+                                  </div>
+                                  )
+                                }})}
+
+                              </div>
+                            </div>
+                          </div>
+                          <div className="time d-flex">
+                            <div className="hour">
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>CN: </p>
+                            </div>
+                            <div className="hour-container">
+                              <div className="row">
+                         
+                                {item.lstLichChieuTheoPhim.map((item, index) =>{
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==0){
+                                  return (
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                    <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
+                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
+                                    </Link>
+                                  </div>
+                                  )
+                                }})}
+
                               </div>
                             </div>
                           </div>

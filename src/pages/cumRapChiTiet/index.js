@@ -73,10 +73,110 @@ export default function CumRapChiTiet({ props }) {
         </div>
         {showtimeItem && showtimeItem.length == 0 ? (
           <div className="col-md-7 col-12 pt-4">
+            <ul className="nav nav-tabs" id="myTab" role="tablist">
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link active"
+                  id="Mon-tab"
+                  data-bs-toggle="tab"
+                  href="#Mon"
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Thứ 2
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Tue-tab"
+                  data-bs-toggle="tab"
+                  href="#Tue"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Thứ 3
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Wed-tab"
+                  data-bs-toggle="tab"
+                  href="#Wed"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Thứ 4
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Thu-tab"
+                  data-bs-toggle="tab"
+                  href="#Thu"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Thứ 5
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Fri-tab"
+                  data-bs-toggle="tab"
+                  href="#Fri"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Thứ 6
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Sat-tab"
+                  data-bs-toggle="tab"
+                  href="#Sat"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Thứ 7
+                </a>
+              </li>
+              <li className="nav-item " role="presentation">
+                <a
+                  className="nav-link"
+                  id="Sun-tab"
+                  data-bs-toggle="tab"
+                  href="#Sun"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                  style={{ marginRight: "5px", fontSize: "20px" }}
+                >
+                  Chủ nhật
+                </a>
+              </li>
+            </ul>
             <p
-              style={{ color: "#dcdcdc", fontWeight: "bold", fontSize: "20px" }}
+              style={{ color: "#dcdcdc", paddingTop: "17px", fontSize: "17px" }}
             >
-              Vui lòng chọn cụm rạp{" "}
+              Hiện chưa có phim. Xin quý khách thông cảm{" "}
             </p>
           </div>
         ) : (
@@ -188,14 +288,14 @@ export default function CumRapChiTiet({ props }) {
                 role="tabpanel"
                 aria-labelledby="home-tab"
               >
-                {showtimeItem.map((item) => {
+                {showtimeItem.map((item, index) => {
                   if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 1) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
                       <>
-                        <CategoryDate item={item} ngay={newNgay} />
+                        <CategoryDate key={index} item={item} ngay={newNgay} />
                       </>
                     );
                   }
@@ -212,14 +312,9 @@ export default function CumRapChiTiet({ props }) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
-                  }
-                  if (
-                    getday(item.ngayChieuGioChieu.substring(0, 10)) == 2 &&
-                    index == 0
-                  ) {
                     return (
                       <>
-                        <CategoryDate item={item} ngay={newNgay} />
+                        <CategoryDate key={index} item={item} ngay={newNgay} />
                       </>
                     );
                   }
@@ -231,13 +326,11 @@ export default function CumRapChiTiet({ props }) {
                 role="tabpanel"
                 aria-labelledby="profile-tab"
               >
-                {showtimeItem.map((item) => {
+                {showtimeItem.map((item, index) => {
                   if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 3) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
-                  }
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 3) {
                     return (
                       <>
                         <CategoryDate item={item} ngay={newNgay} />
@@ -257,11 +350,9 @@ export default function CumRapChiTiet({ props }) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
-                  }
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 4) {
                     return (
                       <>
-                        <CategoryDate item={item} ngay={newNgay} />
+                        <CategoryDate key={index} item={item} ngay={newNgay} />
                       </>
                     );
                   }
@@ -278,11 +369,9 @@ export default function CumRapChiTiet({ props }) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
-                  }
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 5) {
                     return (
                       <>
-                        <CategoryDate item={item} ngay={newNgay} />
+                        <CategoryDate key={index} item={item} ngay={newNgay} />
                       </>
                     );
                   }
@@ -299,11 +388,9 @@ export default function CumRapChiTiet({ props }) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
-                  }
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 6) {
                     return (
                       <>
-                        <CategoryDate item={item} ngay={newNgay} />
+                        <CategoryDate key={index} item={item} ngay={newNgay} />
                       </>
                     );
                   }
@@ -320,11 +407,9 @@ export default function CumRapChiTiet({ props }) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
-                  }
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 0) {
                     return (
                       <>
-                        <CategoryDate item={item} ngay={newNgay} />
+                        <CategoryDate key={index} item={item} ngay={newNgay} />
                       </>
                     );
                   }
