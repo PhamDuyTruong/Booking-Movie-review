@@ -10,7 +10,9 @@ import Signup from "./pages/Signup";
 import TheaterMovie from "./pages/theaterMovie";
 import UseTerm from "./pages/useTerm";
 import SysTheaterDetail from "./pages/SysTheaterDetail";
-import TicketPage from './pages/TicketPage'
+import TicketPage from "./pages/TicketPage";
+import UserInfo from "./pages/UserInfo";
+import UserRoute from './auth/UserRoute'
 
 function App() {
   return (
@@ -34,22 +36,25 @@ function App() {
                 <MovieDetail />
               </Route>
               <Route path="/signup">
-                  <Signup />
+                <Signup />
               </Route>
               <Route path="/useterm">
-                  <UseTerm />
+                <UseTerm />
               </Route>
               <Route path="/forgot">
-                  <ForgotPasswword />
+                <ForgotPasswword />
               </Route>
               <Route path="/theater">
-                  <TheaterMovie />
+                <TheaterMovie />
               </Route>
+              <UserRoute path="/userInfo">
+                <UserInfo />
+              </UserRoute>
               <Route path="/theaterdetail/:theaterId">
-                 <SysTheaterDetail />
+                <SysTheaterDetail />
               </Route>
               <Route path="/ticketdetail/:maLichChieu">
-                 <TicketPage />
+                <TicketPage />
               </Route>
               <Route>
                 <PageNotFound />
@@ -57,9 +62,7 @@ function App() {
             </Switch>
           </AppLayout>
         </Route>
-        
       </Switch>
-     
     </BrowserRouter>
   );
 }
