@@ -2,6 +2,54 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const handleHeaderWhenLogin = () => {
+    // Handle Before Login: Only a Symbol and the letter Account
+    // Handle After Login: A symbol and the user name, when hover the (symbol and name) appear the infouser, admin, logout, ...
+    // If user is admin has a Link to admin page
+
+    const userInfoInLocalStorage = JSON.parse(localStorage.getItem("userInfo"));
+    // Handle Before Login
+    console.log("userInfoInLocalStorage", userInfoInLocalStorage);
+    if (!userInfoInLocalStorage) {
+      return (
+        <Link
+          to="/login"
+          style={{
+            position: "absolute",
+            textDecoration: "none",
+            top: "10px",
+            right: "15px",
+            color: "rgba(0,0,0,.55)",
+            cursor: "pointer",
+          }}
+        >
+          <i className="bi bi-person-circle" style={{ fontSize: "30px" }}></i>
+          <span className="navbar-account" style={{ margin: "5px" }}>
+            Account
+          </span>
+        </Link>
+      );
+    } else {
+      return (
+        <Link
+          to="/userInfo"
+          style={{
+            position: "absolute",
+            textDecoration: "none",
+            top: "10px",
+            right: "15px",
+            color: "rgba(0,0,0,.55)",
+            cursor: "pointer",
+          }}
+        >
+          <i className="bi bi-person-circle" style={{ fontSize: "30px" }}></i>
+          <span className="navbar-account" style={{ margin: "5px" }}>
+            {userInfoInLocalStorage.taiKhoan}
+          </span>
+        </Link>
+      );
+    }
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -50,42 +98,8 @@ export default function Header() {
             <li className="nav-item">
               <Link to="/">News</Link>
             </li>
-            <li className="nav-item navAdd">
-              <Link to="/login">
-                <i
-                  className="bi bi-person-circle"
-                  style={{ fontSize: "30px" }}
-                ></i>
-                <span
-                  className="navbar-account"
-                  style={{ margin: "5px", fontSize: "20px" }}
-                >
-                  Account
-                </span>
-              </Link>
-            </li>
-            <li className="nav-account">
-              <Link
-                to="/login"
-                style={{
-                  position: "absolute",
-                  textDecoration: "none",
-                  top: "5px",
-                  right: "15px",
-                  color: "rgba(0,0,0,.55)",
-                  cursor: "pointer",
-                }}
-              >
-                <i
-                  className="bi bi-person-circle"
-                  style={{ fontSize: "30px" }}
-                ></i>
-
-                <span className="navbar-account" style={{ margin: "5px" }}>
-                  Account
-                </span>
-              </Link>
-            </li>
+            <li className="nav-item navAdd">{handleHeaderWhenLogin()}</li>
+            <li className="nav-account">{handleHeaderWhenLogin()}</li>
           </ul>
         </div>
       </div>

@@ -21,6 +21,7 @@ export function signupAction(value) {
         if (result.isConfirmed) {
           console.log("Redirect");
           // Fix Redirect here !
+          window.location = "/login";
         }
       });
     } catch (error) {

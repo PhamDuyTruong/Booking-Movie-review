@@ -1,13 +1,13 @@
 #navbarMovie{
-    padding-left: 50px;
-    margin-left: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .navbar-nav{
     cursor: pointer;
 }
 #navbarMovie .navbar-nav{
     border-bottom: 1px solid rgba(255, 255, 255, .2);
-    
 }
 #navbarMovie .navbar-nav .nav-item{
     text-transform: uppercase;
