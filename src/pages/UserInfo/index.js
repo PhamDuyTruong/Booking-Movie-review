@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
@@ -7,8 +7,10 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import Swal from "sweetalert2";
+import { getInfoUser } from "../../actions/infoUserAction";
 import "../../Styles/userInfo.scss";
 
 // Regex phone number
@@ -80,12 +82,34 @@ const useStyles = makeStyles((theme) => ({
 export default function VerticalTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const dispatch = useDispatch();
+  const { infoUser } = useSelector((state) => state.infoUser);
 
   // Get localstorage to link admin
+  // If maLoaiNguoiDung==="QuanTri" => has a link to admin
+  // else => nothing
   const infoUserInLocalStorage = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
-  console.log("infoUserInLocalStorage", infoUserInLocalStorage.maLoaiNguoiDung);
+
+  // When user go to the url "/userInfo" call API to get Info User and book tickets right now !
+  useEffect(() => {
+    const ObjSendToBE = {
+      taiKhoan: infoUserInLocalStorage.taiKhoan,
+    };
+    dispatch(getInfoUser(ObjSendToBE));
+  }, []);
+
+  // Create useState here to handleChange inputs
+  const [email, setEmail] = useState();
+  const [account, setAccount] = useState();
+  const [fullName, setFullName] = useState();
+  const [password, setPassword] = useState();
+  const [phone, setPhone] = useState();
 
   // Handle Logout here
   const handleLogOut = () => {
@@ -103,10 +127,6 @@ export default function VerticalTabs() {
         window.location = "/login";
       }
     });
-  };
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
   };
 
   return (
@@ -142,28 +162,28 @@ export default function VerticalTabs() {
                     <input
                       type="email"
                       className="form-control"
-                      id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
+                      value={email}
                     />
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputPassword1">Tài khoản</label>
                     <input
-                      type="password"
+                      type="text"
                       className="form-control"
-                      id="exampleInputPassword1"
                       placeholder="Password"
+                      value={account}
                     />
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputEmail1">Họ tên</label>
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
-                      id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
+                      value={fullName}
                     />
                   </div>
                   <div className="form-group col-4">
@@ -171,27 +191,18 @@ export default function VerticalTabs() {
                     <input
                       type="password"
                       className="form-control"
-                      id="exampleInputPassword1"
                       placeholder="Password"
+                      value={password}
                     />
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputEmail1">Số điện thoại</label>
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
-                      id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
-                    />
-                  </div>
-                  <div className="form-group col-4">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
+                      value={phone}
                     />
                   </div>
                 </div>
