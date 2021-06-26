@@ -21,7 +21,7 @@ export default function CardMovie({ props }) {
           </div>
         </div>
 
-        <div className="card-body" style={{ height: "100px" }}>
+        <div className="card-body" style={{ height: "130px" }}>
           <h4 className="card-title" style={{ fontSize: "20px" }}>
             {props.tenPhim}
           </h4>

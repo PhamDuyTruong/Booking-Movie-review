@@ -1,0 +1,43 @@
+.screen-ticket{
+    border-bottom: 50px solid rgb(255, 159, 95);
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    height: 100px;
+    width: 95%;
+    filter: drop-shadow(4px 30px 20px rgba(255, 255,255 , .5));
+    font-size: 25px;
+    color: #fff;
+}
+.gheVip{
+    background: #FFD700;
+    border: 1px solid yellow;
+}
+.gheThuong{
+    background: #fff;
+}
+.gheDaDat {
+    background: #EE0000;
+}
+.gheDangDat{
+    background: #33ff33;
+}
+.combo-button:hover{
+    color:#EE0000;
+    font-weight: bold;
+}
+.image-ticket{
+    transition: all .5s;
+}
+.image-ticket:hover{
+    transform: scale(1.1, 1.1);
+}
+.minusCombo:hover{
+    color: #FFD700;
+}
+/* Media Querry */
+@media screen and (max-width: 850px) {
+    .ticket-background{
+        width: 100%;
+        height: 2000px !important;
+    }
+}

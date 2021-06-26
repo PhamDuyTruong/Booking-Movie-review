@@ -1,7 +1,7 @@
 #navbarMovie{
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 .navbar-nav{
     cursor: pointer;
@@ -21,6 +21,13 @@
 }
 .nav-account a{
     text-decoration: none;
+}
+
+.collapse{
+  display: none !important;
+}
+.collapse.show{
+  display: block !important;
 }
 
 #navbarMovie .navbar-nav .nav-item a{
@@ -49,7 +56,7 @@
     border-bottom: none !important;
 }
 
-.navbar-account span button:hover{
+.navbar-account:hover{
     font-weight: bold;
 }
 input[type=checkbox] {
@@ -162,6 +169,14 @@ input[type=checkbox] {
 @media screen and (max-width:1005px){
     .nav-account{
         display: none;
+    }
+    #navbarMovie{
+      height: 150px;
+    }
+    .nav-item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     #navbarMovie .navbar-nav{
         border-bottom: none;
