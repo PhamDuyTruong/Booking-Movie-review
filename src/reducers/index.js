@@ -29,7 +29,7 @@ const rootReducer = combineReducers({
   signup: signupReducer,
   addSysMovie: addSysMovieReducer,
   button: handleDetailReducer,
-  infoUser
+  infoUser,
   ticket: ticketMovie, 
   ghe: addGheDatReducer
 
