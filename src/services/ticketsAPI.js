@@ -4,7 +4,7 @@ const ticketAPI ={
     getInfoTicket:(maLichChieu) =>{
         const params ={
             maLichChieu
-        },
+        };
         return axiosClient.get("/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu="+params.maLichChieu)
     }
 };

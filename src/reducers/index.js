@@ -13,6 +13,8 @@ import addSysMovieReducer from "./addSysMovie";
 import handleDetailReducer from "./HandleButtonReducer";
 import ticketMovie from "./TicketReducer";
 import infoUser from "./infoUser";
+import addGheDatReducer from "./datGheReducer";
+
 
 const rootReducer = combineReducers({
   movie: movieReducer,
@@ -27,8 +29,10 @@ const rootReducer = combineReducers({
   signup: signupReducer,
   addSysMovie: addSysMovieReducer,
   button: handleDetailReducer,
-  ticket: ticketMovie,
   infoUser
+  ticket: ticketMovie, 
+  ghe: addGheDatReducer
+
 });
 
 export default rootReducer;
