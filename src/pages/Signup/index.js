@@ -33,7 +33,7 @@ export default function Signup() {
   const dispatch = useDispatch();
   const { error } = useSelector((state) => state.signup);
 
-  // Handle form here
+  // Variable for form
   const {
     register,
     formState: { errors, isValid },

@@ -5,9 +5,11 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Alert from "@material-ui/lab/Alert";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import Swal from "sweetalert2";
 import { getInfoUser } from "../../actions/infoUserAction";
@@ -29,10 +31,6 @@ const schema = yup.object().shape({
     .required("Phone can not be blank !")
     .matches(regexVNPhoneNumber, "Phone has wrong format !"),
   password: yup.string().required("Password can not be blank !"),
-  retypePassword: yup
-    .string()
-    .required("Phone can not be blank !")
-    .oneOf([yup.ref("password"), null], "Password does not match"),
 });
 
 function TabPanel(props) {
@@ -81,10 +79,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VerticalTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValueChange] = React.useState(0);
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValueChange(newValue);
   };
+  const history = useHistory();
+
+  // Variable for form
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+    setValue,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
 
   const dispatch = useDispatch();
   const { infoUser } = useSelector((state) => state.infoUser);
@@ -104,12 +114,21 @@ export default function VerticalTabs() {
     dispatch(getInfoUser(ObjSendToBE));
   }, []);
 
-  // Create useState here to handleChange inputs
-  const [email, setEmail] = useState();
-  const [account, setAccount] = useState();
-  const [fullName, setFullName] = useState();
-  const [password, setPassword] = useState();
-  const [phone, setPhone] = useState();
+  // Set value here and show Info User right away !
+  useEffect(() => {
+    if (infoUser) {
+      setValue("email", infoUser.email);
+      setValue("account", infoUser.taiKhoan);
+      setValue("fullName", infoUser.hoTen);
+      setValue("password", infoUser.matKhau);
+      setValue("phone", infoUser.soDT);
+    }
+  }, [infoUser]);
+
+  // Handle Update Info User
+  const handleUpdateInfoUser = (value) => {
+    console.log("value", value);
+  };
 
   // Handle Logout here
   const handleLogOut = () => {
@@ -124,7 +143,7 @@ export default function VerticalTabs() {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("userInfo");
-        window.location = "/login";
+        history.replace("/login");
       }
     });
   };
@@ -155,59 +174,62 @@ export default function VerticalTabs() {
           </Tabs>
           <TabPanel value={value} index={0}>
             <div className="container">
-              <form>
+              <form onSubmit={handleSubmit(handleUpdateInfoUser)}>
                 <div className="row">
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputEmail1">Email</label>
                     <input
                       type="email"
-                      className="form-control"
+                      className="form-control mb-3"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
-                      value={email}
+                      {...register("email")}
                     />
+                    {/* <Alert variant="filled" severity="error">
+                      This is an error alert — check it out!
+                    </Alert> */}
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputPassword1">Tài khoản</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control mb-3"
                       placeholder="Password"
-                      value={account}
+                      {...register("account")}
                     />
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputEmail1">Họ tên</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control mb-3"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
-                      value={fullName}
+                      {...register("fullName")}
                     />
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputPassword1">Mật khẩu</label>
                     <input
-                      type="password"
-                      className="form-control"
+                      type="text"
+                      className="form-control mb-3"
                       placeholder="Password"
-                      value={password}
+                      {...register("password")}
                     />
                   </div>
                   <div className="form-group col-4">
                     <label htmlFor="exampleInputEmail1">Số điện thoại</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control mb-3"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
-                      value={phone}
+                      {...register("phone")}
                     />
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary">
-                  Submit
+                <button className="btn btn-primary" type="submit">
+                  Cập nhật
                 </button>
               </form>
             </div>

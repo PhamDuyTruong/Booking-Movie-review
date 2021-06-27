@@ -9,7 +9,6 @@ export default function Header() {
 
     const userInfoInLocalStorage = JSON.parse(localStorage.getItem("userInfo"));
     // Handle Before Login
-    console.log("userInfoInLocalStorage", userInfoInLocalStorage);
     if (!userInfoInLocalStorage) {
       return (
         <Link
@@ -30,6 +29,7 @@ export default function Header() {
         </Link>
       );
     } else {
+      // Handle After Login => Show User's Name
       return (
         <Link
           to="/userInfo"
@@ -54,13 +54,13 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <div className="navbar-left">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img
               src="../img/web-logo.png"
               alt="Logo"
               style={{ width: "60px", height: "100%" }}
             ></img>
-          </a>
+          </Link>
         </div>
         <button
           className="navbar-toggler"
