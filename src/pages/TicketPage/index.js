@@ -7,6 +7,7 @@ import PageLoading from "../pageLoading";
 
 export default function TicketPage(props) {
   const [combo, setcombo] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("option1")
   const {maLichChieu} = useParams();
   const {ticketMovie, Loading, error} = useSelector((state) => state.ticket);
   const {danhSachGheDat} = useSelector((state) => state.ghe);
@@ -63,6 +64,15 @@ export default function TicketPage(props) {
         </div>
       )
     })
+  }
+
+  const handleOptionChange = (event) =>{
+    setSelectedOption(event.target.value)
+  }
+  const handleSubmit = () =>{
+    if(infoUser && selectedOption){
+          window.location= "/payment"
+    }
   }
 
   return (
@@ -127,7 +137,7 @@ export default function TicketPage(props) {
             </div>
           </div>
           <div className="col-md-5  col-lg-4 col-12">
-            <div className="ticket-content py-5 px-3" style={{background:"#fff", height:"900px", width:"90%"}}>
+            <div className="ticket-content py-5 px-3 mx-2" style={{background:"#fff", height:"900px", width:"90%"}}>
               <h3 style={{fontSize:"25px", fontWeight:"600"}}>{ticketMovie.thongTinPhim.tenPhim}</h3>
               <p style={{fontWeight:"400"}}>{ticketMovie.thongTinPhim.tenCumRap}</p>
               <p style={{fontWeight:"400"}}>{ticketMovie.thongTinPhim.ngayChieu} - {ticketMovie.thongTinPhim.gioChieu} - {ticketMovie.thongTinPhim.tenRap}</p>
@@ -192,6 +202,9 @@ export default function TicketPage(props) {
                         type="radio"
                         id="cb2"
                         name="thanhToan"
+                        value = "option1"
+                        checked={selectedOption ==="option1"}
+                        onChange = {handleOptionChange}
                         style={{width:"45px"}} />
                     <label htmlFor="cb2">
                         <img src="../img/zalopay.jpg" alt="logo" style={{height:"35px", width:"35px", borderRadius:"50%"}}></img>
@@ -202,7 +215,10 @@ export default function TicketPage(props) {
                   <input
                         type="radio"
                         id="cb3"
+                        value= "option2"
                         name="thanhToan"
+                        checked={selectedOption === "option2"}
+                        onChange ={handleOptionChange}
                         style={{width:"45px"}} />
                     <label htmlFor="cb3">
                         <img src="../img/visa.png" alt="logo" style={{height:"35px", width:"35px", borderRadius:"50%"}}></img>
@@ -213,6 +229,9 @@ export default function TicketPage(props) {
                   <input
                         type="radio"
                         id="cb4"
+                        value="option3"
+                        checked = {selectedOption=== "option3"}
+                        onChange ={handleOptionChange}
                         name="thanhToan"
                         style={{width:"45px"}} />
                     <label htmlFor="cb4">
@@ -221,7 +240,11 @@ export default function TicketPage(props) {
                     </label>
                   </div>
               </div>
-              <div className="footer-ticket py-5">
+              <div className="py-1 d-block" style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                  <button className="btn btn-secondary" onClick ={handleSubmit}>Thanh toán</button>
+                  {(!infoUser || !selectedOption) ? <div className="alert-danger mt-2">Please fill it out completely</div>: ""}
+              </div>
+              <div className="footer-ticket py-2">
                   <img src="../img/chamthan.png" alt="Hinh" style={{width:"30px", height:"30px", borderRadius:"50%"}}></img>
                   <span>Vé đã mua không thể đổi hoặc hoàn trả. Mã vé sẽ được gửi qua email đã nhập </span>
               </div>

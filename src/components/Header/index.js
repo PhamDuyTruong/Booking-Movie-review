@@ -56,7 +56,7 @@ export default function Header() {
         <div className="navbar-left">
           <a className="navbar-brand" href="#">
             <img
-              src="./img/web-logo.png"
+              src="../img/web-logo.png"
               alt="Logo"
               style={{ width: "60px", height: "100%" }}
             ></img>

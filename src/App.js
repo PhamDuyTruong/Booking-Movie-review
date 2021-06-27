@@ -13,6 +13,7 @@ import SysTheaterDetail from "./pages/SysTheaterDetail";
 import TicketPage from "./pages/TicketPage";
 import UserInfo from "./pages/UserInfo";
 import UserRoute from './auth/UserRoute'
+import Payment from './pages/payment'
 
 function App() {
   return (
@@ -55,6 +56,9 @@ function App() {
               </Route>
               <Route path="/ticketdetail/:maLichChieu">
                 <TicketPage />
+              </Route>
+              <Route path="/payment">
+                <Payment />
               </Route>
               <Route>
                 <PageNotFound />
