@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import Swal from "sweetalert2";
 import { getInfoUser } from "../../actions/infoUserAction";
+import { updateInfoUser } from "../../actions/updateInfoUserAction";
 import "../../Styles/userInfo.scss";
 
 // Regex phone number
@@ -98,20 +99,19 @@ export default function VerticalTabs() {
 
   const dispatch = useDispatch();
   const { infoUser } = useSelector((state) => state.infoUser);
+  const { error } = useSelector((state) => state.updateInfoUser);
 
-  // Get localstorage to link admin
-  // If maLoaiNguoiDung==="QuanTri" => has a link to admin
-  // else => nothing
+  // Get localstorage
   const infoUserInLocalStorage = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
 
   // When user go to the url "/userInfo" call API to get Info User and book tickets right now !
   useEffect(() => {
-    const ObjSendToBE = {
+    const ObjToGetInfoUser = {
       taiKhoan: infoUserInLocalStorage.taiKhoan,
     };
-    dispatch(getInfoUser(ObjSendToBE));
+    dispatch(getInfoUser(ObjToGetInfoUser));
   }, []);
 
   // Set value here and show Info User right away !
@@ -128,6 +128,27 @@ export default function VerticalTabs() {
   // Handle Update Info User
   const handleUpdateInfoUser = (value) => {
     console.log("value", value);
+    const ObjToUpdateInfoUser = {
+      taiKhoan: value.account,
+      matKhau: value.password,
+      email: value.email,
+      soDt: value.phone,
+      maNhom: "GP10",
+      maLoaiNguoiDung: "KhachHang",
+      hoTen: value.fullName,
+    };
+    dispatch(updateInfoUser(ObjToUpdateInfoUser));
+  };
+
+  // handle book ticket user
+  const handleBookTicketUser = () => {
+    if (infoUser) {
+      if (infoUser.thongTinDatVe.length === 0) {
+        return "Bạn chưa đặt vé nào cả !";
+      } else {
+        return "Bạn đã đặt vé !";
+      }
+    }
   };
 
   // Handle Logout here
@@ -165,18 +186,16 @@ export default function VerticalTabs() {
             <Tab
               label="Đăng xuất"
               {...a11yProps(2)}
-              className="logout"
+              className="text-danger"
               onClick={handleLogOut}
             />
-            {infoUserInLocalStorage.maLoaiNguoiDung === "QuanTri" ? (
-              <Tab label="Quản lý" {...a11yProps(3)} />
-            ) : null}
           </Tabs>
+
           <TabPanel value={value} index={0}>
             <div className="container">
               <form onSubmit={handleSubmit(handleUpdateInfoUser)}>
                 <div className="row">
-                  <div className="form-group col-4">
+                  <div className="form-group col-6">
                     <label htmlFor="exampleInputEmail1">Email</label>
                     <input
                       type="email"
@@ -185,11 +204,13 @@ export default function VerticalTabs() {
                       placeholder="Enter email"
                       {...register("email")}
                     />
-                    {/* <Alert variant="filled" severity="error">
-                      This is an error alert — check it out!
-                    </Alert> */}
+                    {errors.email && (
+                      <Alert variant="filled" severity="error" className="mb-3">
+                        {errors.email.message}
+                      </Alert>
+                    )}
                   </div>
-                  <div className="form-group col-4">
+                  <div className="form-group col-6">
                     <label htmlFor="exampleInputPassword1">Tài khoản</label>
                     <input
                       type="text"
@@ -197,8 +218,13 @@ export default function VerticalTabs() {
                       placeholder="Password"
                       {...register("account")}
                     />
+                    {errors.account && (
+                      <Alert variant="filled" severity="error" className="mb-3">
+                        {errors.account.message}
+                      </Alert>
+                    )}
                   </div>
-                  <div className="form-group col-4">
+                  <div className="form-group col-6">
                     <label htmlFor="exampleInputEmail1">Họ tên</label>
                     <input
                       type="text"
@@ -207,17 +233,28 @@ export default function VerticalTabs() {
                       placeholder="Enter email"
                       {...register("fullName")}
                     />
+                    {errors.fullName && (
+                      <Alert variant="filled" severity="error" className="mb-3">
+                        {errors.fullName.message}
+                      </Alert>
+                    )}
                   </div>
-                  <div className="form-group col-4">
+                  <div className="form-group col-6">
                     <label htmlFor="exampleInputPassword1">Mật khẩu</label>
                     <input
-                      type="text"
+                      type="password"
                       className="form-control mb-3"
                       placeholder="Password"
                       {...register("password")}
                     />
+
+                    {errors.password && (
+                      <Alert variant="filled" severity="error" className="mb-3">
+                        {errors.password.message}
+                      </Alert>
+                    )}
                   </div>
-                  <div className="form-group col-4">
+                  <div className="form-group col-6">
                     <label htmlFor="exampleInputEmail1">Số điện thoại</label>
                     <input
                       type="text"
@@ -226,23 +263,36 @@ export default function VerticalTabs() {
                       placeholder="Enter email"
                       {...register("phone")}
                     />
+                    {errors.phone && (
+                      <Alert variant="filled" severity="error" className="mb-3">
+                        {errors.phone.message}
+                      </Alert>
+                    )}
                   </div>
                 </div>
-                <button className="btn btn-primary" type="submit">
-                  Cập nhật
-                </button>
+                <div className="d-flex align-items-center">
+                  <button className="btn btn-primary mx-auto" type="submit">
+                    Cập nhật
+                  </button>
+                </div>
+                {error ? (
+                  <div className="d-flex align-items-center mt-3">
+                    <Alert
+                      variant="filled"
+                      severity="error"
+                      className="mx-auto"
+                    >
+                      {error}
+                    </Alert>
+                  </div>
+                ) : null}
               </form>
             </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Lịch sử đặt vé
+            {handleBookTicketUser()}
           </TabPanel>
           <TabPanel value={value} index={2}></TabPanel>
-          {infoUserInLocalStorage.maLoaiNguoiDung === "QuanTri" ? (
-            <TabPanel value={value} index={3}>
-              Quản lý
-            </TabPanel>
-          ) : null}
         </div>
       </div>
     </div>
