@@ -16,7 +16,7 @@
     background: #fff;
 }
 .gheDaDat {
-    background: #EE0000;
+    background: #EE0000 !important;
 }
 .gheDangDat{
     background: #33ff33;
@@ -49,4 +49,10 @@
     .ticket-content{
         height: 1000px !important;
     }
+}
+@media screen and (min-width: 870px) and (max-width: 955px){
+    .ticket-background{
+        width: 100%;
+        height: 1250px !important;
+    } 
 }
