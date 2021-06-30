@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { datGhe } from "../../actions/datGheAction";
 import { getInfoTicket } from "../../actions/TicketAction";
 import PageLoading from "../pageLoading";
@@ -15,9 +15,8 @@ export default function TicketPage(props) {
   useEffect(() => {
     dispatch(getInfoTicket(maLichChieu))
     
-  }, [maLichChieu])
-  console.log(ticketMovie);
-  console.log(danhSachGheDat);
+  }, [])
+  
   if (Loading) {
     return (
       <div className="container" style={{height:"850px", width:"100%", paddingTop:"200px"}}>
@@ -40,11 +39,20 @@ export default function TicketPage(props) {
   const infoUser = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
-  
+    const infoPayment = localStorage.getItem("PaymentInfo")
+    ? JSON.parse(localStorage.getItem("PaymentInfo"))
+    : null;
+    if(!infoUser){
+      localStorage.clear();
+    }
+
   const renderHangGhe = () =>{
 
     return ticketMovie.danhSachGhe.map((hangGhe, index) =>{
+     
       let cssGheDat = " ";
+      let cssGheDaDat = "";
+      let disabled = false;
       if(hangGhe.loaiGhe === "Vip"){
         cssGheDat = "gheVip"
       }
@@ -52,13 +60,36 @@ export default function TicketPage(props) {
         cssGheDat = "gheThuong"
       }
       let cssGheDangDat = " ";
-      let indexGheDangDat = danhSachGheDat.findIndex(gheDangDat => gheDangDat.tenGhe === hangGhe.tenGhe);
+      let indexGheDangDat = danhSachGheDat.findIndex(gheDangDat => gheDangDat.maGhe === hangGhe.maGhe);
       if(indexGheDangDat != -1){
         cssGheDangDat = "gheDangDat";
       }
+     // Tạo danh sách ghế để lưu các ghế lên localStorage
+      let newDanhSachGhe =[]
+      danhSachGheDat.map((ghe) =>{
+        ghe.daDat = true;
+        newDanhSachGhe.push({maGhe: ghe.maGhe});
+        localStorage.setItem("ticketInfo", JSON.stringify(newDanhSachGhe))
+        localStorage.setItem("Status",JSON.stringify(ghe.daDat))
+      })
+     const ticketInfo = localStorage.getItem("ticketInfo") ? JSON.parse(localStorage.getItem("ticketInfo"))
+     : null; 
+    const Status = localStorage.getItem("Status") ? JSON.parse(localStorage.getItem("Status"))
+      : null; 
+      if(ticketInfo){
+        let indexAgain = ticketInfo.findIndex(gheDangDat => gheDangDat.maGhe === hangGhe.maGhe);
+        if(infoPayment == false && indexAgain != -1 && Status == true){
+          cssGheDaDat = "gheDaDat"
+          disabled = true;
+        }
+      }
+    
+    localStorage.removeItem("PaymentInfo");
+    localStorage.removeItem("TicketInfo")
+    
       return (
         <div key={index} className="text-light text-left ml-5 col-1">
-            <button onClick={()=>handleDatGhe(hangGhe)} className={`btn ${cssGheDat} ${cssGheDangDat}`} style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}}>
+            <button onClick={()=>handleDatGhe(hangGhe)} className={`btn ${cssGheDat} ${cssGheDangDat} ${cssGheDaDat} `} disabled ={disabled} style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}}>
                 {hangGhe.tenGhe}
             </button>
         </div>
@@ -71,7 +102,7 @@ export default function TicketPage(props) {
   }
   const handleSubmit = () =>{
     if(infoUser && selectedOption){
-          window.location= "/payment"
+        window.location= "/payment"
     }
   }
 
@@ -137,7 +168,7 @@ export default function TicketPage(props) {
             </div>
           </div>
           <div className="col-md-5  col-lg-4 col-12">
-            <div className="ticket-content py-5 px-3 mx-2" style={{background:"#fff", height:"900px", width:"90%"}}>
+            <div className="ticket-content py-5 px-3 mx-2" style={{background:"#fff", height:"900px", width:"95%"}}>
               <h3 style={{fontSize:"25px", fontWeight:"600"}}>{ticketMovie.thongTinPhim.tenPhim}</h3>
               <p style={{fontWeight:"400"}}>{ticketMovie.thongTinPhim.tenCumRap}</p>
               <p style={{fontWeight:"400"}}>{ticketMovie.thongTinPhim.ngayChieu} - {ticketMovie.thongTinPhim.gioChieu} - {ticketMovie.thongTinPhim.tenRap}</p>
@@ -173,6 +204,7 @@ export default function TicketPage(props) {
                           return tongTien += gheDangDat.giaVe
                          
                   }, 0) + combo).toLocaleString()} VND
+                 
                   </td>
                 </tr>
               </div>
@@ -254,7 +286,6 @@ export default function TicketPage(props) {
       </div>
       )
     } 
-
       </div>
   )
 }

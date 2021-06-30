@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   button: handleDetailReducer,
   infoUser,
   ticket: ticketMovie, 
-  ghe: addGheDatReducer
+  ghe: addGheDatReducer,
 
 });
 
