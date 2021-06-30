@@ -14,6 +14,7 @@ import handleDetailReducer from "./HandleButtonReducer";
 import ticketMovie from "./TicketReducer";
 import infoUser from "./infoUser";
 import addGheDatReducer from "./datGheReducer";
+import updateInfoUserReducer from "./updateInfoUserReducer";
 
 
 const rootReducer = combineReducers({
@@ -32,7 +33,7 @@ const rootReducer = combineReducers({
   infoUser,
   ticket: ticketMovie, 
   ghe: addGheDatReducer,
-
+  updateInfoUser: updateInfoUserReducer
 });
 
 export default rootReducer;
