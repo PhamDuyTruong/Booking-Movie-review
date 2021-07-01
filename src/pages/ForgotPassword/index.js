@@ -8,8 +8,11 @@ export default function ForgotPasswword() {
         style={{
           width: "100%",
           height: "850px",
-          backgroundColor: "#d6d6d6",
+          backgroundImage: "url(../img/spiderman.jpg)",
           overflow: "hidden",
+          backgroundRepeat:"no-repeat",
+          backgroundSize:"cover",
+          backgroundPosition:"center center"
         }}
       >
         <div className="row">

@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
+import ModalVideo from 'react-modal-video'
+import '../../Styles/modal-video.scss';
+
 
 
 export default function Carousel() {
+  const [isOpen, setOpen] = useState(false)
   return (
-    <div id="carouselMovie" className="carousel slide" data-bs-ride="carousel">
+    <div id="carouselMovie" className="carousel slide" data-bs-ride="carousel" >
       <div className="carousel-indicators">
         <button
           type="button"
@@ -39,11 +43,9 @@ export default function Carousel() {
             <div className="container carousel-caption ">
              
               <div className="carousel-trailer">
-                
+              <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="VTnGOjtaWAY" onClose={() => setOpen(false)} />
               <button class="btn btn-trailer">
-              <a className="venobox" id="firstLink" data-autoplay="true" data-vbtype="video" href="https://youtu.be/VTnGOjtaWAY">
-                  <span><i className="bi bi-play-fill"></i></span>
-              </a>
+                  <span><i className="bi bi-play-fill" onClick={()=> setOpen(true)}></i></span>
               </button>  
               
               </div>
@@ -61,11 +63,9 @@ export default function Carousel() {
           <div class="container carousel-caption ">
             
             <div className="carousel-trailer">
-            
-            <button class="btn btn-trailer">
-              <a className="venobox" id="firstLink" data-autoplay="true" data-vbtype="video" href="https://youtu.be/uqJ9u7GSaYM">
+            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="uqJ9u7GSaYM" onClose={() => setOpen(false)} />
+            <button class="btn btn-trailer" onClick={()=> setOpen(true)}>
                   <span><i className="bi bi-play-fill"></i></span>
-              </a>
             </button>  
             </div>
           </div>
@@ -81,12 +81,11 @@ export default function Carousel() {
           <div className="container carousel-caption ">
            
             <div className="carousel-trailer">
+            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="ykBfss-8H4Y" onClose={() => setOpen(false)} />
             <button class="btn btn-trailer">
-              <a className="venobox" id="firstLink" data-autoplay="true" data-vbtype="video" href="https://youtu.be/ykBfss-8H4Y">
                   <span>
-                    <i className="bi bi-play-fill"></i>
+                    <i className="bi bi-play-fill" onClick={()=> setOpen(true)}></i>
                   </span>
-              </a>
             </button>  
             </div>
           </div>

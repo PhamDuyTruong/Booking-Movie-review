@@ -131,7 +131,6 @@ const CheckoutForm = () => {
       setProcessing(true);
     
     }
-    console.log(processing);
 
     const payload = await stripe.createPaymentMethod({
       type: "card",
@@ -152,7 +151,7 @@ const CheckoutForm = () => {
  }
 
   const reset = () => {
-      window.location = "/"
+      window.location = "/userInfo"
   };
 
   return paymentMethod ? (
@@ -235,7 +234,7 @@ const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 
 
     return (
-        <div className="background-payment d-block" style={{width:"100%", height:"750px", backgroundImage:"url(../img/background-phim.jpg)", backgroundRepeat:"no-repeat", backgroundSize:"cover", backgroundPosition:"center center"}}>
+        <div className="background-payment d-block" style={{width:"100%", height:"750px", opacity:"0.8", backgroundImage:"url(../img/background-phim.jpg)", backgroundRepeat:"no-repeat", backgroundSize:"cover", backgroundPosition:"center center"}}>
             <h2 className="py-4" style={{color:"#fff", textAlign:"center"}}>Thanh toán</h2>
             <div className="AppWrapper" style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
               <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>

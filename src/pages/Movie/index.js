@@ -69,23 +69,7 @@ export default function Movie() {
     dispatch(getDataComingMovies());
   }, []);
 
-  if (isLoading) {
-    return (
-      <div
-        className="container"
-        style={{ height: "850px", width: "100%", paddingTop: "200px" }}
-      >
-        <div className="row">
-          <div className="col-4"></div>
-          <div className="col-6">
-            <PageLoading></PageLoading>
-          </div>
-          <div className="col-2"></div>
-        </div>
-      </div>
-    );
-  }
-  if (Loading) {
+  if (Loading && isLoading) {
     return (
       <div
         className="container"
@@ -101,10 +85,7 @@ export default function Movie() {
       </div>
     );
   }
-  if (errorComing) {
-    return <div>{error}</div>;
-  }
-  if (error) {
+  if (error && errorComing) {
     return <div>{error}</div>;
   }
 

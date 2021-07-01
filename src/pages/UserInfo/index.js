@@ -105,6 +105,14 @@ export default function VerticalTabs() {
   const infoUserInLocalStorage = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
+    const infoPayment = localStorage.getItem("PaymentInfo")
+    ? JSON.parse(localStorage.getItem("PaymentInfo"))
+    : null;
+    const infoTicket = localStorage.getItem("ticketInfo")
+    ? JSON.parse(localStorage.getItem("ticketInfo"))
+    : null;
+
+
 
   // When user go to the url "/userInfo" call API to get Info User and book tickets right now !
   useEffect(() => {
@@ -140,13 +148,36 @@ export default function VerticalTabs() {
     dispatch(updateInfoUser(ObjToUpdateInfoUser));
   };
 
+
   // handle book ticket user
   const handleBookTicketUser = () => {
     if (infoUser) {
+      if(infoPayment == false){
+        infoUser.thongTinDatVe = infoTicket
+      }
+      console.log(infoUser.thongTinDatVe);
       if (infoUser.thongTinDatVe.length === 0) {
-        return "Bạn chưa đặt vé nào cả !";
+        return "Bạn chưa đặt vé nào cả"
       } else {
-        return "Bạn đã đặt vé !";
+        return (
+          <>
+          <h2 style={{fontSize:"25px"}}>Bạn đã đặt vé !!!</h2>
+          <p  style={{fontWeight:"bold"}}>Thông tin vé</p>
+          {infoUser.thongTinDatVe.map((item, index) =>{
+            return (
+                <div>
+                    <div className="d-flex">
+                        <h2 style={{fontSize:"20px", color:"#ff3300"}}>Vé {index+1}</h2>
+                        <p className="px-3">Mã rạp: {item.maRap}</p>
+                        <p className="px-3">Tên ghế: {item.tenGhe}</p>
+                        <p>Giá vé: {item.giaVe}</p>
+                    </div>
+                </div>
+            )
+          })}
+          </>
+          
+        );
       }
     }
   };

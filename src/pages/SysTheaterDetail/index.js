@@ -16,17 +16,14 @@ export default function SysTheaterDetail(props) {
     useEffect(() => {
         dispatch(getInfoSystemTheater(theaterId))
     }, [theaterId]);
-    // console.log(sysTheater);
     const handleDetailButton =(ten, diaChi) =>{
         dispatch(handleButton(ten, diaChi))
     }
-
-    // console.log(name);
     const handleAddSysMovie =(item, id)=>{
         dispatch(addSysMovie(item, id))
         setActive(id)
     }
-    // console.log(SystemMovie);
+
 
     if (Loading) {
         return (
@@ -56,7 +53,7 @@ export default function SysTheaterDetail(props) {
       {name == null && address == null ? <div className="sysTheater-background" style={{position:"relative"}}>
    
    <div className="context">
-     <h1 style={{fontWeight:"400"}}>Tix là nơi để bạn giải trí </h1>
+     <h1 style={{fontWeight:"600"}}>Tix là nơi để bạn giải trí </h1>
    </div>
 
    <div className="area">
@@ -340,9 +337,7 @@ export default function SysTheaterDetail(props) {
                       );
                     })}
                 </div>
-                }
-                      
-             
+                }   
             </div>
         </div>
       </>

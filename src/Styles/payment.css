@@ -130,6 +130,7 @@
   
   .ErrorMessage {
     color: #ff3300;
+    font-weight: bold;
     position: absolute;
     display: flex;
     justify-content: center;

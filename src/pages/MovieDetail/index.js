@@ -32,7 +32,6 @@ export default function MovieDetail(props) {
     <div>{error}</div>;
   }
   const scrollHeight = () =>{
-
     window.scrollTo(0, 600)
   }
   const handleStar = (score) => {

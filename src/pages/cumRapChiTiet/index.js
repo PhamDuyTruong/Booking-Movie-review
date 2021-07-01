@@ -7,7 +7,7 @@ import CategoryDate from "../CategoryDate";
 export default function CumRapChiTiet({ props }) {
   const { infoTheater, error } = useSelector((state) => state.info);
   const { showtimeItem } = useSelector((state) => state.showtime);
-  const [active, setActive] = useState("BHDStar");
+  const [active, setActive] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getInfoTheater());
@@ -17,7 +17,6 @@ export default function CumRapChiTiet({ props }) {
   }
 
   const handleShowtimes = (item, id) => {
-    console.log(id);
     dispatch(addShowtimeMovie(item, id));
     setActive(id);
   };

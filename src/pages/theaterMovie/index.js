@@ -94,10 +94,11 @@ export default function TheaterMovie() {
                   return (
                     <div key={item.maHeThongRap}>
                       <div className="theater-content">
-                        {item.lstCumRap.map((item) => {
+                        {item.lstCumRap.map((item, index) => {
                           return (
                             <>
                               <button
+                                key={index}
                                 className={
                                   "d-flex py-4 button-theater " +
                                   (item.maCumRap === active ? "active" : " ")

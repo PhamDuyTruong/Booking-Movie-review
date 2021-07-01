@@ -24,15 +24,12 @@
     height: 800px;
 }
 #carouselMovie .carousel-caption .carousel-trailer{
-    opacity: 0;
-  
-}
-#carouselMovie .carousel-inner:hover .carousel-trailer{
-    opacity: 1;
     transition: all .5s;
-    transform: scale(1.2);
-    
-    
+    opacity: 1;
+}
+#carouselMovie .carousel-caption .carousel-trailer:hover span{
+    color:royalblue;
+    border: 1px solid royalblue;
 }
 #carouselMovie .carousel-indicators {
     bottom: 50px;

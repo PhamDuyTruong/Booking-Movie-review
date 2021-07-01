@@ -36,12 +36,14 @@ export default function TicketPage(props) {
   const handleDatGhe =(ghe) =>{
     dispatch(datGhe(ghe))
   }
+  // Get localStorage
   const infoUser = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
     const infoPayment = localStorage.getItem("PaymentInfo")
     ? JSON.parse(localStorage.getItem("PaymentInfo"))
     : null;
+
     if(!infoUser){
       localStorage.clear();
     }
@@ -64,28 +66,27 @@ export default function TicketPage(props) {
       if(indexGheDangDat != -1){
         cssGheDangDat = "gheDangDat";
       }
-     // Tạo danh sách ghế để lưu các ghế lên localStorage
-      let newDanhSachGhe =[]
-      danhSachGheDat.map((ghe) =>{
-        ghe.daDat = true;
-        newDanhSachGhe.push({maGhe: ghe.maGhe});
-        localStorage.setItem("ticketInfo", JSON.stringify(newDanhSachGhe))
-        localStorage.setItem("Status",JSON.stringify(ghe.daDat))
-      })
-     const ticketInfo = localStorage.getItem("ticketInfo") ? JSON.parse(localStorage.getItem("ticketInfo"))
-     : null; 
-    const Status = localStorage.getItem("Status") ? JSON.parse(localStorage.getItem("Status"))
-      : null; 
-      if(ticketInfo){
-        let indexAgain = ticketInfo.findIndex(gheDangDat => gheDangDat.maGhe === hangGhe.maGhe);
-        if(infoPayment == false && indexAgain != -1 && Status == true){
-          cssGheDaDat = "gheDaDat"
-          disabled = true;
-        }
+     if(hangGhe.daDat == true){
+       cssGheDaDat = "gheDaDat";
+       disabled = true
+     }
+     let newDanhSachPhim = [];
+     danhSachGheDat.map(item =>{
+       if(infoUser){
+       item.taiKhoanNguoiDat = infoUser.taiKhoan;
       }
+       newDanhSachPhim.push({maGhe: item.maGhe, tenGhe: item.tenGhe, giaVe: item.giaVe, maRap: item.maRap, taiKhoan: item.taiKhoanNguoiDat})
+       localStorage.setItem("ticketInfo", JSON.stringify(newDanhSachPhim))
+     })
     
-    localStorage.removeItem("PaymentInfo");
-    localStorage.removeItem("TicketInfo")
+    localStorage.removeItem("PaymentInfo")
+  //   if(infoUser.thongTinDatVe){
+  //   let indexAgain = infoUser.thongTinDatVe.findIndex(ghe => ghe.maGhe === hangGhe.maGhe);
+  //     if(infoPayment == false && indexAgain != -1){
+  //       cssGheDaDat = "gheDaDat";
+  //       disabled = true
+  //   }
+  // }
     
       return (
         <div key={index} className="text-light text-left ml-5 col-1">

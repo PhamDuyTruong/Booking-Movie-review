@@ -1,22 +1,25 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {lazy, Suspense} from 'react'
 import AppLayout from "./layouts/AppLayout";
-import ForgotPasswword from "./pages/ForgotPassword";
-import Home from "./pages/Home";
-import LoginPage from "./pages/LoginPage";
-import Movie from "./pages/Movie";
-import MovieDetail from "./pages/MovieDetail";
-import PageNotFound from "./pages/PageNotFound";
-import Signup from "./pages/Signup";
-import TheaterMovie from "./pages/theaterMovie";
-import UseTerm from "./pages/useTerm";
-import SysTheaterDetail from "./pages/SysTheaterDetail";
-import TicketPage from "./pages/TicketPage";
-import UserInfo from "./pages/UserInfo";
-import UserRoute from './auth/UserRoute'
-import Payment from './pages/payment'
-
+const Home = lazy(() => import("./pages/Home"));
+const ForgotPasswword = lazy(() => import("./pages/ForgotPassword"))
+const LoginPage = lazy(() => import("./pages/LoginPage"))
+const Movie = lazy(() => import("./pages/Movie"))
+const MovieDetail = lazy(() => import("./pages/MovieDetail"))
+const PageNotFound = lazy(() =>import("./pages/PageNotFound"))
+const Signup = lazy(()=> import("./pages/Signup"))
+const TheaterMovie = lazy(() => import("./pages/theaterMovie"))
+const UseTerm = lazy(()=> import("./pages/useTerm"))
+const SysTheaterDetail = lazy(() => import("./pages/SysTheaterDetail"))
+const TicketPage = lazy(() =>import("./pages/TicketPage"))
+const UserInfo = lazy(() => import("./pages/UserInfo"))
+const UserRoute = lazy(() =>import("./auth/UserRoute"))
+const Payment = lazy(() => import("./pages/payment"))
 function App() {
   return (
+    <Suspense fallback={<div>
+        <i className="fa fa-spinner fa-spin" style={{color:"#000"}}></i>Loading...
+    </div>}>
     <BrowserRouter>
       <Switch>
         <Route path="/">
@@ -68,6 +71,7 @@ function App() {
         </Route>
       </Switch>
     </BrowserRouter>
+    </Suspense>
   );
 }
 
