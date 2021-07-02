@@ -15,11 +15,13 @@ import ticketMovie from "./TicketReducer";
 import infoUser from "./infoUser";
 import addGheDatReducer from "./datGheReducer";
 import updateInfoUserReducer from "./updateInfoUserReducer";
+import movieAPIReducer from "./movieAPIReducer";
 
 
 const rootReducer = combineReducers({
   movie: movieReducer,
   movieComing: movieComingReducer,
+  dataMovies: movieAPIReducer,
   detailMovie: detailMovie,
   theaterMovie: theaterMovie,
   addTheater: addTheaterMovie,

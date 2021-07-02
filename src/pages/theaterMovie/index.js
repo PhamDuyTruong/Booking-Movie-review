@@ -136,6 +136,7 @@ export default function TheaterMovie() {
                                   </p>
                                   <a
                                     className="theater-detail"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="09191919191"
                                     href="#"
                                     style={{
                                       textDecoration: "none",

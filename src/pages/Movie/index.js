@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getDataMovies } from "../../actions/movieActions";
 import Slider from "react-slick";
@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { getDataComingMovies } from "../../actions/movieComingAction";
 import CardMovie from "../CardMovie";
 import PageLoading from "../pageLoading";
+import { getMovies } from "../../actions/movieAPIAction";
 
 export default function Movie() {
   let settings = {
@@ -21,10 +22,31 @@ export default function Movie() {
     slidesPerRow: 1,
     responsive: [
       {
+        breakpoint: 1245,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          arrows:false,
+          infinite: true,
+          dots: true,
+          autoplay: true,
+        },
+      },
+      {
         breakpoint: 1200,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+          autoplay: true,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
           infinite: true,
           dots: true,
           autoplay: true,
@@ -44,6 +66,7 @@ export default function Movie() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
+          arrows:false,
           initialSlide: 2,
           autoplay: true,
         },
@@ -57,14 +80,16 @@ export default function Movie() {
       },
     ],
   };
+  const [searchValue, setSearchValue] = useState("");
+  const [moviesSearch, setMovies] = useState([]);
   const { movies, isLoading, error } = useSelector((state) => state.movie);
+  const {moviesAPI, isLoadingMovies} = useSelector((state) => state.dataMovies)
   const { moviesComing, Loading, errorComing } = useSelector(
     (state) => state.movieComing
   );
-
   const dispatch = useDispatch();
-
   useEffect(() => {
+    dispatch(getMovies())
     dispatch(getDataMovies());
     dispatch(getDataComingMovies());
   }, []);
@@ -85,68 +110,123 @@ export default function Movie() {
       </div>
     );
   }
+  if(isLoadingMovies){
+    <div>Loading...</div>
+  }
   if (error && errorComing) {
     return <div>{error}</div>;
   }
+  const resetInputField = () => {
+    setSearchValue([]);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    let tenPhim = searchValue.trim().toLowerCase()
+    const newArrayMovies = moviesAPI.filter((item) => (item.tenPhim).toLowerCase().indexOf(tenPhim) > -1);
+    setMovies(newArrayMovies);
+    resetInputField();
+  };
+  const handleSearchInputChanges = (e) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
-    <div className="container mb-3" id="showtime">
-      <ul className="nav nav-tabs" id="myTab" role="tablist">
-        <li className="nav-item " role="presentation">
-          <a
-            className="nav-link active"
-            id="On-tab"
-            data-bs-toggle="tab"
-            href="#On"
-            role="tab"
-            aria-controls="home"
-            aria-selected="true"
-            style={{ marginRight: "10px" }}
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3 col-2"></div>
+          <div className="col-md-6">
+          <form
+            className="search py-3"
+            onSubmit={handleOnSubmit}
+            style={{ width: "100%", backgroundColor:"#fff" }}
           >
-            đang chiếu
-          </a>
-        </li>
-        <li className="nav-item " role="presentation">
-          <a
-            className="nav-link movie-link"
-            id="Coming-tab"
-            data-bs-toggle="tab"
-            href="#Coming"
-            role="tab"
-            aria-controls="profile"
-            aria-selected="false"
-          >
-            sắp chiếu
-          </a>
-        </li>
-      </ul>
-      <div className="tab-content" id="myTabContent">
-        <div
-          className="tab-pane fade show active"
-          id="On"
-          role="tabpanel"
-          aria-labelledby="home-tab"
-        >
-          <Slider {...settings}>
-            {movies.map((item, index) => (
-              <CardMovie key={index} props={item} />
-            ))}
-          </Slider>
-        </div>
-
-        <div
-          className="tab-pane fade"
-          id="Coming"
-          role="tabpanel"
-          aria-labelledby="profile-tab"
-        >
-          <Slider {...settings}>
-            {moviesComing.map((item, index) => (
-              <CardMovie key={index} props={item} />
-            ))}
-          </Slider>
+            <input
+              className ="searchBtn"
+              value={searchValue}
+              onChange={handleSearchInputChanges}
+              type="search"
+              placeholder="Search..."
+            />
+          </form>
+          </div>
+          <div className="col-md-6"></div>
         </div>
       </div>
-    </div>
+      {moviesSearch ? (
+        <div className="container">
+           <div className="row">
+          {moviesSearch.map((item, index) => (
+            <div key={index} className="col-md-3 col-6">
+            <CardMovie key={index} props={item} />
+            </div>
+          ))}
+          </div>
+        </div>
+      ) : (
+        <div className="container">
+          <p style={{color:"#dcdcdc"}}>Không tìm thầy phim nào !!!</p>
+        </div>
+      )}
+      <div className="container mb-3" id="showtime">
+        <ul className="nav nav-tabs" id="myTab" role="tablist">
+          <li className="nav-item " role="presentation">
+            <a
+              className="nav-link active"
+              id="On-tab"
+              data-bs-toggle="tab"
+              href="#On"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+              style={{ marginRight: "10px" }}
+            >
+              đang chiếu
+            </a>
+          </li>
+          <li className="nav-item " role="presentation">
+            <a
+              className="nav-link movie-link"
+              id="Coming-tab"
+              data-bs-toggle="tab"
+              href="#Coming"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              sắp chiếu
+            </a>
+          </li>
+        </ul>
+        <div className="tab-content" id="myTabContent">
+          <div
+            className="tab-pane fade show active"
+            id="On"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <Slider {...settings}>
+              {movies.map((item, index) => (
+                <CardMovie key={index} props={item} />
+              ))}
+            </Slider>
+          </div>
+
+          <div
+            className="tab-pane fade"
+            id="Coming"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <Slider {...settings}>
+              {moviesComing.map((item, index) => (
+                <CardMovie key={index} props={item} />
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

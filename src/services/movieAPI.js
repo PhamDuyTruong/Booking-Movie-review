@@ -2,6 +2,10 @@
 import axiosClient from './axiosClient'
 
 const movieAPI ={
+    getMovies:() =>{
+       return axiosClient.get("/QuanLyPhim/LayDanhSachPhim?maNhom=GP10") 
+    },
+
     getDataMovies: ()=>{
 
         return axiosClient.get("/QuanLyPhim/LayDanhSachPhimTheoNgay?maNhom=GP10&soTrang=1&soPhanTuTrenTrang=15&tuNgay=01%2F01%2F2018&denNgay=30%2F05%2F2021")

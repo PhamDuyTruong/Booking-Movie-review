@@ -72,4 +72,8 @@
     transform: translateY(0px);
     
 }
-
+/* Search button */
+.searchBtn{
+    background: #fff !important;
+    border: 1px solid #000 !important;
+}

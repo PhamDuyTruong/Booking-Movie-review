@@ -184,7 +184,7 @@ export default function Signup() {
                 I agree with
                 <Link
                   to="/useterm"
-                  style={{ textDecoration: "none", color: "#fb4226" }}
+                  style={{ textDecoration: "none", color: "#fb4226", paddingLeft:"5px" }}
                 >
                   terms and conditions
                 </Link>
