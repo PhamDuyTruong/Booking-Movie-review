@@ -20,7 +20,7 @@
 .button-gradient{
     overflow: hidden;
     position: absolute;
-    top:77px;
+    top:0px;
     left: 0px;
     width: 100%;
     height: 350px;
@@ -28,7 +28,7 @@
 }
 .system-container{
     position: absolute;
-    top:100px;
+    top:25px;
     left: 30px
 }
 .time-content{
@@ -38,4 +38,17 @@
 .time-content:hover{
 
     color: #fb4226 !important;
+}
+@media screen and (max-width: 560px) {
+    .sys-rate{
+        display: none;
+    }
+}
+@media screen and (min-width: 585px) and (max-width: 722px){
+    .systemTheater-row{
+        width: 550px !important;
+    }
+    .sys-row{
+        width: 550px;
+    }
 }

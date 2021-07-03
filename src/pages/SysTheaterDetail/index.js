@@ -72,23 +72,23 @@ export default function SysTheaterDetail(props) {
      </div>
    </div>:
 
-    <div className="background-content">
-      <div className="image-background" style={{position:"relative"}}>
+    <div className="background-content" style={{position:"relative"}}>
+      <div className="image-background">
         <img src="../img/Cumrap.jpg" alt="Hình ảnh" style={{width:"100%", height:"350px", opacity:".8"}}>
         </img>
       </div>
         <div className="button-gradient">
         </div>
-        <div className="system-container" style={{width:"100%"}}>
-            <div className="row">
-              <div className="col-lg-6 col-md-8 d-flex">
+        <div className="system-container">
+            <div className="row sys-row">
+              <div className="col-lg-9 col-md-8 d-flex systemTheater-row">
                   <img src="../img/Cumrap.jpg" alt="Hình ảnh" style={{width:"150px", height:"150px"}}></img>
                   <div className="system-content px-2" style={{color:"#fff"}}>
                       <h3>{name}</h3>
                       <p>{address}</p>
                   </div>
               </div>
-              <div className="col-lg-6 col-md-4">
+              <div className="col-lg-3 col-md-4 systemTheater-row sys-rate">
                     <h3 style={{color:"#fff"}}>Đánh giá</h3>
                     <div className="theaterRate" style={{background:"rgba(0,0,0,.5)",border:"3px solid #00DC00", borderRadius:"50%", width:"100px", height:"100px"}}>
                         <p style={{fontWeight:"bold", color:"#fff", fontSize:"30px", padding:"25px"}}>8.5</p>

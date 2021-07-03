@@ -62,7 +62,7 @@ export default function TheaterMovie() {
         className="container-fluid py-3"
         style={{ width: "100%", height: "650px" }}
       >
-        <div className="row" style={{ overflowY: "scroll", height: "600px" }}>
+        <div className="row tm-content" style={{ overflowY: "scroll", scrollBehavior:"smooth", height: "600px" }}>
           <div className="col-md-6 col-12">
             <div className="row">
               <div className="col-2 logo">

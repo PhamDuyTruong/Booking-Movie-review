@@ -44,15 +44,36 @@
 @media screen and (min-width: 751px) and (max-width: 870px) {
     .ticket-background{
         width: 100%;
-        height: 1400px !important;
+        height: 1510px !important;
     }
     .ticket-content{
         height: 1000px !important;
     }
+    .ticket-price{
+        font-size: 25px !important;
+    }
+    .combo-price{
+        padding:0 4px !important;
+    }
 }
-@media screen and (min-width: 870px) and (max-width: 955px){
+@media screen and (min-width: 870px) and (max-width: 999px){
     .ticket-background{
         width: 100%;
-        height: 1250px !important;
+        height: 1600px !important;
+    } 
+}
+@media screen and (max-width: 420px){
+    .ticket-background{
+        width: 100%;
+        height: 2550px !important;
+    } 
+    .ticket-price{
+        display: none;
+    }
+}
+@media screen and (min-width: 430px) and (max-width: 740px){
+    .ticket-background{
+        width: 100%;
+        height: 2500px !important;
     } 
 }

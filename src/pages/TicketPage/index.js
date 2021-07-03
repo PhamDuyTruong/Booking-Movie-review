@@ -89,7 +89,7 @@ export default function TicketPage(props) {
   // }
     
       return (
-        <div key={index} className="text-light text-left ml-5 col-1">
+        <div key={index} className="text-light text-left ml-5 col-md-2 col-lg-1 col-xs-3 col-2">
             <button onClick={()=>handleDatGhe(hangGhe)} className={`btn ${cssGheDat} ${cssGheDangDat} ${cssGheDaDat} `} disabled ={disabled} style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}}>
                 {hangGhe.tenGhe}
             </button>
@@ -123,7 +123,7 @@ export default function TicketPage(props) {
       {ticketMovie.length ==0 ?(<div>
       </div>)
       :(
-      <div className="py-5" >
+      <div className="py-5 ticket-detail" >
         <div className="row">
           <div className="col-md-7 col-lg-8 col-12">
             <div className="d-flex">
@@ -133,11 +133,11 @@ export default function TicketPage(props) {
                   <h3 className="px-2" style={{color:"#fff", fontSize:"20px", fontWeight:"bold"}}>{ticketMovie.thongTinPhim.tenCumRap}</h3>
                   <p className="px-2" style={{color:"#fff", fontWeight:"bold"}}>{ticketMovie.thongTinPhim.ngayChieu.substring(0,5)} - {ticketMovie.thongTinPhim.gioChieu} - {ticketMovie.thongTinPhim.tenRap}</p>
                 </div>
-                <div className="px-5 d-flex">
+                <div className="px-5 d-flex combo-price">
                   <img className="image-ticket" src="../img/popcorn.jpg" alt="Combo" style={{width:"60px", height:"60px", borderRadius:"50%"}}></img>
                   <span className="px-2" style={{color:"#fff", fontSize:"35px"}}>+</span>
                   <img className="image-ticket" src="../img/coca.jpg" alt="Combo" style={{width:"60px", height:"60px", borderRadius:"50%"}}></img>
-                  <span className="px-2" style={{color:"#FF3300", fontSize:"35px"}}>= 50K</span>
+                  <span className="px-2 ticket-price" style={{color:"#FF3300", fontSize:"35px"}}>= 50K</span>
                 </div>
             </div>
             <h2 style={{textAlign:"center", color:"#fff", fontWeight:"600"}}>Màn hình</h2>
@@ -149,26 +149,26 @@ export default function TicketPage(props) {
             </div>
             <div className="phanLoai-container">
               <div className="row">
-                <div className="col-3 d-flex">
-                    <button className="btn gheThuong" style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
+                <div className="col-md-3 col-xs-6 d-flex">
+                    <button className="btn gheThuong" style={{width:"50px", height:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
                     <p className="px-1" style={{color:"#fff"}}>: Ghế thường</p>
                 </div>
-                <div className="col-3 d-flex">
-                    <button className="btn gheVip" style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
+                <div className="col-md-3 col-xs-6 d-flex">
+                    <button className="btn gheVip" style={{width:"50px", height:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
                     <p className="px-1" style={{color:"#fff"}}>: Ghế Vip</p>
                 </div>
-                <div className="col-3 d-flex">
-                    <button className="btn gheDangDat" style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
+                <div className="col-md-3 col-xs-6 d-flex">
+                    <button className="btn gheDangDat" style={{width:"50px", height:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
                     <p className="px-1" style={{color:"#fff"}}>: Ghế đang đặt</p>
                 </div>
-                <div className="col-3 d-flex">
-                    <button className="btn gheDaDat" style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
+                <div className="col-md-3 col-xs-6 d-flex">
+                    <button className="btn gheDaDat" style={{width:"50px", height:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}} ></button>
                     <p className="px-1" style={{color:"#fff"}}>: Ghế đã đặt</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-md-5  col-lg-4 col-12">
+          <div className=" col-md-5  col-lg-4 col-12">
             <div className="ticket-content py-5 px-3 mx-2" style={{background:"#fff", height:"900px", width:"95%"}}>
               <h3 style={{fontSize:"25px", fontWeight:"600"}}>{ticketMovie.thongTinPhim.tenPhim}</h3>
               <p style={{fontWeight:"400"}}>{ticketMovie.thongTinPhim.tenCumRap}</p>
