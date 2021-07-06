@@ -22,7 +22,7 @@ export function loginAction(value) {
       ).then((result) => {
         if (result.isConfirmed) {
           console.log("Redirect");
-          window.location = "/";
+          window.history.back();
         }
       });
     } catch (error) {

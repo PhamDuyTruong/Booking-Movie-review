@@ -11,7 +11,7 @@ export default function TheaterMovie() {
   const { theater, isLoading, error } = useSelector(
     (state) => state.theaterMovie
   );
-  const [active, setActive] = useState("bhd-star-cineplex-pham-hung");
+  const [active, setActive] = useState("");
   const { theaterMethod } = useSelector((state) => state.addTheater);
   const dispatch = useDispatch();
 

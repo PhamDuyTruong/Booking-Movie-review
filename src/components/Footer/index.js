@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollToTop from "../../pages/ScrollToTop";
 import "../../Styles/footer.scss";
 export default function Footer() {
   return (
@@ -131,6 +132,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <ScrollToTop />
     </footer>
   );
 }
