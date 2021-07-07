@@ -1,4 +1,5 @@
 import React from "react";
+import {Redirect, Link} from 'react-router-dom'
 
 export default function ForgotPasswword() {
   return (
@@ -22,7 +23,7 @@ export default function ForgotPasswword() {
               style={{ width: "600px", height: "700px" }}
             >
               <form className="box">
-                <h1>Forgot Password</h1>
+                <h1 className="forgetpasswordText">Forgot Password</h1>
                 <p className="text-muted">
                   Just enter email address you've used to resgiter and we'll
                   send you a reset link
@@ -35,7 +36,9 @@ export default function ForgotPasswword() {
                   placeholder="Email"
                   id="emailForgot"
                 />
-                <input type="submit" name defaultValue="Login" href="#" />
+                <Link to ="/login">
+                    <input type="submit" name defaultValue="Login" href="/login"/>
+                </Link>
               </form>
             </div>
           </div>

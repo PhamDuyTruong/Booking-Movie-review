@@ -149,7 +149,7 @@ export default function Movie() {
               value={searchValue}
               onChange={handleSearchInputChanges}
               type="search"
-              placeholder="Search..."
+              placeholder="Nhập tên phim..."
             />
           </form>
           </div>
