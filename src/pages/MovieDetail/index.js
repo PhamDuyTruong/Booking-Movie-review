@@ -31,9 +31,11 @@ export default function MovieDetail(props) {
   if (error) {
     <div>{error}</div>;
   }
+  // Khi click vào mua vé sẽ scroll xuống cumRapChiTiet
   const scrollHeight = () =>{
     window.scrollTo(0, 600)
   }
+  // Dùng điểm ImDb để qui ước nhằm đánh giá số sao
   const handleStar = (score) => {
     if (score > 0 && score <= 2) {
       return (

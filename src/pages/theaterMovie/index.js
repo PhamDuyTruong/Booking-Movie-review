@@ -30,6 +30,7 @@ export default function TheaterMovie() {
     dispatch(addTheaterMovie(item, maCumRap));
     setActive(maCumRap);
   };
+  // Dùng để lấy ngày nhằm render ra phim tương ứng
   function getday(item){
     let ngay = new Date(item);
     let thu = ngay.getDay();

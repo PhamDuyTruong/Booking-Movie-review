@@ -24,6 +24,7 @@ export default function CumRapChiTiet({ props }) {
   function pushNgay(item) {
     newNgay.push(item);
   }
+  // Dùng để láy thứ trong tuần nhằm render ra phim tương ứng 
   function getday(item) {
     let ngay = new Date(item);
     let thu = ngay.getDay();
@@ -293,9 +294,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
-                        <CategoryDate key={index} item={item} ngay={newNgay} />
-                      </>
+                      <div key={index}>
+                        <CategoryDate  item={item} ngay={newNgay} />
+                      </div>
                     );
                   }
                 })}
@@ -312,9 +313,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
-                        <CategoryDate key={index} item={item} ngay={newNgay} />
-                      </>
+                      <div key={index}>
+                        <CategoryDate  item={item} ngay={newNgay} />
+                      </div>
                     );
                   }
                 })}
@@ -331,9 +332,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
+                      <div key={index}>
                         <CategoryDate item={item} ngay={newNgay} />
-                      </>
+                      </div>
                     );
                   }
                 })}
@@ -350,9 +351,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
-                        <CategoryDate key={index} item={item} ngay={newNgay} />
-                      </>
+                      <div key={index}>
+                        <CategoryDate  item={item} ngay={newNgay} />
+                      </div>
                     );
                   }
                 })}
@@ -369,9 +370,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
-                        <CategoryDate key={index} item={item} ngay={newNgay} />
-                      </>
+                      <div key={index}>
+                        <CategoryDate  item={item} ngay={newNgay} />
+                      </div>
                     );
                   }
                 })}
@@ -388,9 +389,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
-                        <CategoryDate key={index} item={item} ngay={newNgay} />
-                      </>
+                      <div key={index}>
+                        <CategoryDate  item={item} ngay={newNgay} />
+                      </div>
                     );
                   }
                 })}
@@ -407,9 +408,9 @@ export default function CumRapChiTiet({ props }) {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
                     return (
-                      <>
-                        <CategoryDate key={index} item={item} ngay={newNgay} />
-                      </>
+                      <div key={index}>
+                        <CategoryDate  item={item} ngay={newNgay} />
+                      </div>
                     );
                   }
                 })}

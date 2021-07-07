@@ -115,8 +115,6 @@ const CheckoutForm = () => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
     console.log(stripe);
@@ -227,9 +225,6 @@ const ELEMENTS_OPTIONS = {
     }
   ]
 };
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
 const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 
 

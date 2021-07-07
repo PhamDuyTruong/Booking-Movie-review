@@ -103,7 +103,7 @@ export default function LoginPage() {
                   </div>
                   <div className="row justify-content-center my-2">
                     <Link to="/forgot" className="text-center">
-                      <small className="text-muted forgetpasswordText" style={{textDecoration:"none"}}>Forgot Password?</small>
+                      <small className="text-muted">Forgot Password?</small>
                     </Link>
                   </div>
                 </div>

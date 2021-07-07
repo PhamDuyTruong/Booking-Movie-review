@@ -62,7 +62,9 @@ export default function TicketPage(props) {
         cssGheDat = "gheThuong"
       }
       let cssGheDangDat = " ";
+      // Tìm ghế phù hợp với mã ghế
       let indexGheDangDat = danhSachGheDat.findIndex(gheDangDat => gheDangDat.maGhe === hangGhe.maGhe);
+      // Nếu tìm thấy thì set lại cssGheDangDat
       if(indexGheDangDat != -1){
         cssGheDangDat = "gheDangDat";
       }
@@ -72,6 +74,7 @@ export default function TicketPage(props) {
      }
      let newDanhSachPhim = [];
      danhSachGheDat.map(item =>{
+       // Nếu có tài khoản thì thông tin vé và thông tin phim sẽ được lưu vào localStorage
        if(infoUser){
        item.taiKhoanNguoiDat = infoUser.taiKhoan;
       }
@@ -97,7 +100,7 @@ export default function TicketPage(props) {
       )
     })
   }
-
+  // Điều khiển việc chọn hình thức thanh toán
   const handleOptionChange = (event) =>{
     setSelectedOption(event.target.value)
   }
