@@ -187,8 +187,9 @@ export default function SysTheaterDetail(props) {
                             </div>
                           </div>
                           <div className="time d-flex">
+                           
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T2: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Mon: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -205,11 +206,11 @@ export default function SysTheaterDetail(props) {
                                 }})}
 
                               </div>
-                            </div>
+                          </div>
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T3: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Tue: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -217,7 +218,7 @@ export default function SysTheaterDetail(props) {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))==2){
                                   return (
-                                  <div key={index} className="col-md-3 col-6">
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                         <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                     </Link>
@@ -227,10 +228,11 @@ export default function SysTheaterDetail(props) {
 
                               </div>
                             </div>
+                            
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T4: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Wed: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -251,7 +253,7 @@ export default function SysTheaterDetail(props) {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T5: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thu: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -272,7 +274,7 @@ export default function SysTheaterDetail(props) {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T6: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Fri: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -280,7 +282,7 @@ export default function SysTheaterDetail(props) {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))==5){
                                   return (
-                                  <div key={index} className="col-md-3 col-6">
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                         <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                      </Link>
@@ -292,9 +294,10 @@ export default function SysTheaterDetail(props) {
                             </div>
                           </div>
                           <div className="time d-flex">
-                            <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>T7: </p>
-                            </div>
+                          
+                                <div className="hour">
+                                  <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Sat: </p>
+                                </div>
                             <div className="hour-container">
                               <div className="row">
                          
@@ -309,12 +312,12 @@ export default function SysTheaterDetail(props) {
                                   )
                                 }})}
 
-                              </div>
+                               </div>
                             </div>
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>CN: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Sun: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
