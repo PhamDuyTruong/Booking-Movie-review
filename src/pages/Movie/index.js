@@ -8,6 +8,7 @@ import { getDataComingMovies } from "../../actions/movieComingAction";
 import CardMovie from "../CardMovie";
 import PageLoading from "../pageLoading";
 import { getMovies } from "../../actions/movieAPIAction";
+import SearchIcon from "@material-ui/icons/Search"
 
 export default function Movie() {
   let settings = {
@@ -16,8 +17,8 @@ export default function Movie() {
     speed: 500,
     arrows: true,
     autoplay: true,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 6,
+    slidesToScroll: 6,
     rows: 2,
     slidesPerRow: 1,
     responsive: [
@@ -138,7 +139,7 @@ export default function Movie() {
       <div className="container">
         <div className="row">
           <div className="col-md-3 col-2"></div>
-          <div className="col-md-6">
+          <div className="col-md-6 d-flex">
           <form
             className="search py-3"
             onSubmit={handleOnSubmit}
@@ -152,6 +153,9 @@ export default function Movie() {
               placeholder="Nhập tên phim..."
             />
           </form>
+          <button className="btn btn-primary" style={{height:"50px", marginTop:"15px", marginLeft:"5px"}} onClick={handleOnSubmit}>
+                <SearchIcon />
+            </button>
           </div>
           <div className="col-md-6"></div>
         </div>
