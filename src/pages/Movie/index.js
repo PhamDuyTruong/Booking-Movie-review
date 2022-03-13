@@ -17,8 +17,8 @@ export default function Movie() {
     speed: 500,
     arrows: true,
     autoplay: true,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     rows: 2,
     slidesPerRow: 1,
     responsive: [
