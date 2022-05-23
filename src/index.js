@@ -13,16 +13,20 @@ import rootReducer from "./reducers";
 
 import thunk from "redux-thunk";
 // Sử dụng middleware
-const middleware = applyMiddleware(thunk);
+//const middleware = applyMiddleware(thunk);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Gộp middleware và redux devtools thành một
-const enhancer = compose(
-  middleware,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// const enhancer = compose(
+//   middleware,
+  
+// );
 
 // Tạo store từ reducer
-const store = createStore(rootReducer, enhancer);
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+  );
 
 ReactDOM.render(
   <Provider store={store}>

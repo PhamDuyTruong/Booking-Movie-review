@@ -2,7 +2,7 @@ import axiosClient from './axiosClient'
 
 const theaterAPI ={
     getDataTheater:() =>{
-        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP10")
+        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01")
     },
     getInfoTheater: () =>{
         return axiosClient.get("/QuanLyRap/LayThongTinHeThongRap")
@@ -10,9 +10,9 @@ const theaterAPI ={
     getInfoSystemTheater:(theaterId) =>{
         const params={
             maHeThongRap: theaterId,
-            maNhom: "GP10"
+            maNhom: "GP01"
         }
-        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap="+ params.maHeThongRap +"&maNhom=GP10")
+        return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap="+ params.maHeThongRap +"&maNhom=GP01")
     }
 }
 

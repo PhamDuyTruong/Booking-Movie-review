@@ -44,7 +44,7 @@ export default function Carousel() {
              
               <div className="carousel-trailer">
               <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="VTnGOjtaWAY" onClose={() => setOpen(false)} />
-              <button class="btn btn-trailer">
+              <button className="btn btn-trailer">
                   <span><i className="bi bi-play-fill" onClick={()=> setOpen(true)}></i></span>
               </button>  
               
