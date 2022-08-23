@@ -21,11 +21,11 @@ export default function CardMovie({ props }) {
           </div>
         </div>
 
-        <div className="card-body" style={{ height: "130px" }}>
+        <div className="card-body" style={{ height: "130px", display: "flex", flexDirection: "column" }}>
           <h4 className="card-title" style={{ fontSize: "20px" }}>
             {props.tenPhim}
           </h4>
-          <div className="card-text">
+          <div className="card-text" style={{marginTop: "auto"}}>
             <div className="row" style={{ fontWeight: "300" }}>
               <div className="col-6">120 phút</div>
               <div className="col-6">{props.danhGia} IMDb</div>

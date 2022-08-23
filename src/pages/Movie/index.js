@@ -91,6 +91,7 @@ export default function Movie() {
     (state) => state.movieComing
   );
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getMovies())
     dispatch(getDataMovies());
@@ -125,7 +126,7 @@ export default function Movie() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    let tenPhim = searchValue.trim().toLowerCase()
+    let tenPhim = (searchValue.trim()).toLowerCase();
     const newArrayMovies = moviesAPI.filter((item) => (item.tenPhim).toLowerCase().indexOf(tenPhim) > -1);
     setMovies(newArrayMovies);
     resetInputField();
