@@ -21,17 +21,17 @@ const regexVNPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
 
 // Tạo schame validation
 const schema = yup.object().shape({
-  account: yup.string().required("Account can not be blank !"),
-  fullName: yup.string().required("Name can not be blank !"),
+  account: yup.string().required("Tài khoản không được bỏ trống !"),
+  fullName: yup.string().required("Tên không được bỏ trống !"),
   email: yup
     .string()
-    .required("Email can not be blank !")
-    .email("Email has wrong format !"),
+    .required("Email không được bỏ trống !")
+    .email("Email sai định dạng !"),
   phone: yup
     .string()
-    .required("Phone can not be blank !")
-    .matches(regexVNPhoneNumber, "Phone has wrong format !"),
-  password: yup.string().required("Password can not be blank !"),
+    .required("Số điện thoại không được bỏ trống !")
+    .matches(regexVNPhoneNumber, "Số điện thoại sai định dạng !"),
+  password: yup.string().required("Mật khẩu không được bỏ trống !"),
 });
 
 function TabPanel(props) {
@@ -86,7 +86,6 @@ export default function VerticalTabs() {
   };
   const history = useHistory();
 
-  // Variable for form
   const {
     register,
     formState: { errors, isValid },
@@ -152,7 +151,7 @@ export default function VerticalTabs() {
   // handle book ticket user
   const handleBookTicketUser = () => {
     if (infoUser) {
-      if(infoPayment == false){
+      if(infoPayment === false){
         infoUser.thongTinDatVe = infoTicket
       }
       console.log(infoUser.thongTinDatVe);

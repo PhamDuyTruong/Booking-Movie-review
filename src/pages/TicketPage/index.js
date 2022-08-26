@@ -278,7 +278,7 @@ export default function TicketPage(props) {
               </div>
               <div className="py-1 d-block" style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                   <button className="btn btn-secondary" onClick ={handleSubmit}>Thanh toán</button>
-                  {(!infoUser || !selectedOption) ? <div className="alert-danger mt-2">Please fill it out completely</div>: ""}
+                  {(!infoUser || !selectedOption) ? <div className="alert-danger mt-2">Làm ơn hãy điền đầy đủ</div>: ""}
               </div>
               <div className="footer-ticket py-2">
                   <img src="../img/chamthan.png" alt="Hinh" style={{width:"30px", height:"30px", borderRadius:"50%"}}></img>

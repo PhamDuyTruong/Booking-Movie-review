@@ -157,7 +157,7 @@ export default function SysTheaterDetail(props) {
                       )
                     })}
                 </div>
-                {SystemMovie.length ==0 ?<div className="col-md-7 col-12" style={{color:"#dcdcdc"}}> Vui lòng chọn cụm rạp  </div>
+                {SystemMovie.length ===0 ?<div className="col-md-7 col-12" style={{color:"#dcdcdc"}}> Vui lòng chọn cụm rạp  </div>
                 :
                 <div className="col-md-7 col-12">
                     {SystemMovie.map((item,index)=>{
@@ -195,7 +195,7 @@ export default function SysTheaterDetail(props) {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==1){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===1){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -216,7 +216,7 @@ export default function SysTheaterDetail(props) {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==2){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===2){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -238,7 +238,7 @@ export default function SysTheaterDetail(props) {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==3){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===3){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -259,7 +259,7 @@ export default function SysTheaterDetail(props) {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==4){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10)) ===4){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -279,8 +279,8 @@ export default function SysTheaterDetail(props) {
                             <div className="hour-container">
                               <div className="row">
                          
-                                {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==5){
+                                {item.lstLichChieuTheoPhim.map((item, index) => {
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10)) === 5){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -302,7 +302,7 @@ export default function SysTheaterDetail(props) {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==6){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10)) === 6){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -323,7 +323,7 @@ export default function SysTheaterDetail(props) {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==0){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10)) === 0){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>

@@ -17,10 +17,6 @@ import thunk from "redux-thunk";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Gộp middleware và redux devtools thành một
-// const enhancer = compose(
-//   middleware,
-  
-// );
 
 // Tạo store từ reducer
 const store = createStore(

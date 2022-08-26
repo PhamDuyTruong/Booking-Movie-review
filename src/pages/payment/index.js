@@ -155,10 +155,10 @@ const CheckoutForm = () => {
   return paymentMethod ? (
     <div className="Result">
       <div className="ResultTitle" style={{color:"#fff", fontSize:"25px", fontWeight:"bold"}} role="alert">
-        Payment successful
+        Thanh toán thành công
       </div>
       <div className="ResultMessage" style={{color:"#fff"}}>
-        Thanks for buying ticket. We hope you will have wonderful experiences at Tix.
+        Cảm ơn đã mua vé. Chúng tôi hi vọng bạn sẽ có nhiều trải nghiệm với Tix.
       </div>
       <ResetButton onClick={reset} />
     </div>
@@ -212,7 +212,7 @@ const CheckoutForm = () => {
       </fieldset>
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
       <SubmitButton processing={processing} error={error} disabled={!stripe}>
-        Pay
+        Trả
       </SubmitButton>
     </form>
   );

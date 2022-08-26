@@ -42,7 +42,7 @@ export default function TheaterMovie() {
     <div style={{paddingTop:"50px"}}>
         <div class="container-fluid py-4" style={{position:"relative"}}>
         <div class="content">
-          <p>Click here !</p>
+          <p>Nhấn vào đây !</p>
           <svg id="more-arrows">
             <polygon
               class="arrow-top"
@@ -158,7 +158,7 @@ export default function TheaterMovie() {
               </div>
             </div>
           </div>
-          {theaterMethod.length == 0 ? (
+          {theaterMethod.length === 0 ? (
             <div className="col-md-6 col-12" style={{ color: "#dcdcdc" }}>
               Vui lòng chọn cụm rạp
             </div>
@@ -195,7 +195,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==1){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===1){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -216,7 +216,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==2){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===2){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -237,7 +237,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==3){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===3){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -258,7 +258,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==4){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===4){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -279,7 +279,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==5){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===5){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -301,7 +301,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==6){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===6){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
@@ -322,7 +322,7 @@ export default function TheaterMovie() {
                               <div className="row">
                          
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
-                                  if(getday(item.ngayChieuGioChieu.substring(0,10))==0){
+                                  if(getday(item.ngayChieuGioChieu.substring(0,10))===0){
                                   return (
                                   <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>

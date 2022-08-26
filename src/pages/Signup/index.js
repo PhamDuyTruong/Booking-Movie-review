@@ -11,21 +11,21 @@ const regexVNPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
 
 // Tạo schame validation
 const schema = yup.object().shape({
-  account: yup.string().required("Account can not be blank !"),
-  fullName: yup.string().required("Name can not be blank !"),
+  account: yup.string().required("Tài khoản không được để trống !"),
+  fullName: yup.string().required("Tên không được để trống !"),
   email: yup
     .string()
-    .required("Email can not be blank !")
-    .email("Email has wrong format !"),
+    .required("Email không được để trống !")
+    .email("Email sai định dạng !"),
   phone: yup
     .string()
-    .required("Phone can not be blank !")
-    .matches(regexVNPhoneNumber, "Phone has wrong format !"),
-  password: yup.string().required("Password can not be blank !"),
+    .required("Số điện thoại không được để trống !")
+    .matches(regexVNPhoneNumber, "Số điện thoại sai định dạng !"),
+  password: yup.string().required("Mật khẩu không được để trống !"),
   retypePassword: yup
     .string()
-    .required("Phone can not be blank !")
-    .oneOf([yup.ref("password"), null], "Password does not match"),
+    .required("Số điện thoại không được để trống !")
+    .oneOf([yup.ref("password"), null], "Mật khẩu không khớp"),
 });
 
 export default function Signup() {
@@ -73,9 +73,9 @@ export default function Signup() {
     <div className="container-fluid" style={{ backgroundColor: "#fdfcf0" }}>
       <div className="row">
         <form className="col-5" onSubmit={handleSubmit(handleSignUp)}>
-          <h3 className="mb-3 text-danger text-center">Registration Form</h3>
+          <h3 className="mb-3 text-danger text-center">Đăng ký</h3>
           <div className="form-group">
-            <label className="form-control-label text-muted">Account</label>
+            <label className="form-control-label text-muted">Tài khoản</label>
             <input
               type="text"
               id="account"
@@ -91,7 +91,7 @@ export default function Signup() {
             )}
           </div>
           <div className="form-group">
-            <label className="form-control-label text-muted">Full Name</label>
+            <label className="form-control-label text-muted">Họ tên</label>
             <input
               type="text"
               id="name"
@@ -123,7 +123,7 @@ export default function Signup() {
             )}
           </div>
           <div className="form-group">
-            <label className="form-control-label text-muted">Phone</label>
+            <label className="form-control-label text-muted">SĐT</label>
             <input
               type="text"
               id="phone"
@@ -139,7 +139,7 @@ export default function Signup() {
             )}
           </div>
           <div className="form-group">
-            <label className="form-control-label text-muted">Password</label>
+            <label className="form-control-label text-muted">Mật khẩu</label>
             <input
               type="password"
               id="psw"
@@ -156,7 +156,7 @@ export default function Signup() {
           </div>
           <div className="form-group">
             <label className="form-control-label text-muted">
-              Retype Password
+              Nhập lại mật khẩu
             </label>
             <input
               type="password"
@@ -181,25 +181,25 @@ export default function Signup() {
                 onChange={handleChangeCheckBox}
               />
               <label htmlFor="cb1">
-                I agree with
+                Tôi đồng ý
                 <Link
                   to="/useterm"
                   style={{ textDecoration: "none", color: "#fb4226", paddingLeft:"5px" }}
                 >
-                  terms and conditions
+                   các điều khoản
                 </Link>
               </label>
             </div>
           </div>
           {!isChecked && (
             <div className="alert alert-danger mt-3">
-              Please accept the terms to register account !
+               Làm ơn hãy chấp nhận các điều khoản !
             </div>
           )}
           {error && <div className="alert alert-danger mt-3">{error}</div>}
           <div className="row justify-content-center my-3 px-3">
             <button className="btn-block btn-signup" type="submit">
-              Sign Up
+              Đăng ký
             </button>
           </div>
         </form>

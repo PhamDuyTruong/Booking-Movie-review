@@ -152,7 +152,7 @@ export default function MovieDetail(props) {
               </tr>
               <tr>
                 <td className="px-2">Thể loại: </td>
-                <td>Action, Adventurous, Humourous</td>
+                <td>Hành động, phiêu lưu, hài hước</td>
               </tr>
               <tr>
                 <td className="px-2">Điểm IMDb: </td>

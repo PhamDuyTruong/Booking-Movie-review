@@ -23,16 +23,14 @@ export default function ForgotPasswword() {
               style={{ width: "600px", height: "700px" }}
             >
               <form className="box">
-                <h1 className="forgetpasswordText">Forgot Password</h1>
+                <h1 className="forgetpasswordText">Quên mật khẩu</h1>
                 <p className="text-muted">
-                  Just enter email address you've used to resgiter and we'll
-                  send you a reset link
+                  Hãy nhập địa chỉ email bạn đã đăng ký. Chúng tôi sẽ gửi bạn link để nhập lại mật khẩu.
                 </p>
                 <p className="text-muted">Email</p>
                 <input
                   type="text"
                   name="email"
-                  id="id"
                   placeholder="Email"
                   id="emailForgot"
                 />

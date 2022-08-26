@@ -126,7 +126,7 @@ export default function Movie() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    let tenPhim = (searchValue.trim()).toLowerCase();
+    let tenPhim = searchValue.length !== 0 ? searchValue.toLowerCase() : "null";
     const newArrayMovies = moviesAPI.filter((item) => (item.tenPhim).toLowerCase().indexOf(tenPhim) > -1);
     setMovies(newArrayMovies);
     resetInputField();
@@ -173,7 +173,7 @@ export default function Movie() {
         </div>
       ) : (
         <div className="container">
-          <p style={{color:"#dcdcdc"}}>Không tìm thầy phim nào !!!</p>
+          <p style={{color:"#dcdcdc"}}>Không tìm thấy phim nào !!!</p>
         </div>
       )}
       <div className="container mb-3" id="showtime">

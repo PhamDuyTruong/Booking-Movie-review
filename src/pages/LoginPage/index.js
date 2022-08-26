@@ -59,10 +59,10 @@ export default function LoginPage() {
                       style={{ width: "60px", height: "100%" }}
                     />
                   </div>
-                  <h6 className="text-center">Please login to your account</h6>
+                  <h6 className="text-center">Hãy đăng nhập tài khoản của bạn</h6>
                   <div className="form-group">
                     <label className="form-control-label text-muted">
-                      Account
+                      Tài khoản
                     </label>
                     <input
                       type="text"
@@ -80,7 +80,7 @@ export default function LoginPage() {
                   </div>
                   <div className="form-group">
                     <label className="form-control-label text-muted">
-                      Password
+                      Mật khẩu
                     </label>
                     <input
                       type="password"
@@ -98,19 +98,19 @@ export default function LoginPage() {
                   </div>
                   <div className="row justify-content-center px-3">
                     <button className="btn-block btn-color" type="submit">
-                      Login
+                      Đăng nhập
                     </button>
                   </div>
                   <div className="row justify-content-center my-2">
                     <Link to="/forgot" className="text-center">
-                      <small className="text-muted">Forgot Password?</small>
+                      <small className="text-muted">Quên mật khẩu?</small>
                     </Link>
                   </div>
                 </div>
               </div>
               <div className="bottom text-center">
                 <p href="#" className="sm-text mx-auto mb-3 mr-3">
-                  Don't have an account?
+                  Không có tài khoản?
                   <button
                     className="btn btn-secondary ml-2"
                     style={{ borderRadius: "15px", marginLeft: "5px" }}
@@ -119,7 +119,7 @@ export default function LoginPage() {
                       to="/signup"
                       style={{ textDecoration: "none", color: "#fff" }}
                     >
-                      Create New
+                      Đăng ký
                     </Link>
                   </button>
                 </p>
