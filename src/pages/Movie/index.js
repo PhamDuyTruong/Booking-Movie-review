@@ -172,7 +172,7 @@ export default function Movie() {
           </div>
         </div>
       ) : (
-        <div className="container">
+        <div className="container" style={{display:"block"}}>
           <p style={{color:"#dcdcdc"}}>Không tìm thấy phim nào !!!</p>
         </div>
       )}
