@@ -1,3 +1,14 @@
+#Booking Movie use technologies:
++ SCSS / Boostrap 4
++ Axios
++ React router dom
++ React redux
++ Formik, yup
++ React-reveal
++ React-slick
++ sweetalert2
++ react-modal-video
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
