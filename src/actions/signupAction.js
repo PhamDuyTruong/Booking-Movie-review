@@ -5,7 +5,7 @@ import {
 } from "../constants/signupConstant";
 import authAPI from "../services/authAPI";
 import Swal from "sweetalert2";
-import { Redirect } from "react-router-dom";
+
 
 export function signupAction(value) {
   return async (dispatch) => {

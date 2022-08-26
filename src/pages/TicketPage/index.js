@@ -65,10 +65,10 @@ export default function TicketPage(props) {
       // Tìm ghế phù hợp với mã ghế
       let indexGheDangDat = danhSachGheDat.findIndex(gheDangDat => gheDangDat.maGhe === hangGhe.maGhe);
       // Nếu tìm thấy thì set lại cssGheDangDat
-      if(indexGheDangDat != -1){
+      if(indexGheDangDat !== -1){
         cssGheDangDat = "gheDangDat";
       }
-     if(hangGhe.daDat == true){
+     if(hangGhe.daDat === true){
        cssGheDaDat = "gheDaDat";
        disabled = true
      }
@@ -83,13 +83,6 @@ export default function TicketPage(props) {
      })
     
     localStorage.removeItem("PaymentInfo")
-  //   if(infoUser.thongTinDatVe){
-  //   let indexAgain = infoUser.thongTinDatVe.findIndex(ghe => ghe.maGhe === hangGhe.maGhe);
-  //     if(infoPayment == false && indexAgain != -1){
-  //       cssGheDaDat = "gheDaDat";
-  //       disabled = true
-  //   }
-  // }
     
       return (
         <div key={index} className="text-light text-left ml-5 col-md-2 col-lg-1 col-xs-3 col-2">
@@ -123,7 +116,7 @@ export default function TicketPage(props) {
         backgroundPosition: "center center",
       }}
     >
-      {ticketMovie.length ==0 ?(<div>
+      {ticketMovie.length ===0 ?(<div>
       </div>)
       :(
       <div className="py-5 ticket-detail" >
