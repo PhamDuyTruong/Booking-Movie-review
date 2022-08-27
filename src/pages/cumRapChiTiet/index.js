@@ -71,7 +71,7 @@ export default function CumRapChiTiet({ props }) {
             );
           })}
         </div>
-        {showtimeItem && showtimeItem.length == 0 ? (
+        {showtimeItem && showtimeItem.length === 0 ? (
           <div className="col-md-7 col-12 pt-4">
             <ul className="nav nav-tabs" id="myTab" role="tablist">
               <li className="nav-item " role="presentation">
@@ -176,7 +176,7 @@ export default function CumRapChiTiet({ props }) {
             <p
               style={{ color: "#dcdcdc", paddingTop: "17px", fontSize: "17px" }}
             >
-              Hiện chưa có phim. Xin quý khách thông cảm{" "}
+              Hiện chưa có phim. Xin quý khách thông cảm
             </p>
           </div>
         ) : (
@@ -289,7 +289,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="home-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 1) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 1) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
@@ -308,7 +308,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="profile-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 2) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 2) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
@@ -327,7 +327,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="profile-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 3) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 3) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
@@ -346,7 +346,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="profile-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 4) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 4) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
@@ -365,7 +365,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="profile-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 5) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 5) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
@@ -384,7 +384,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="profile-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 6) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 6) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }
@@ -403,7 +403,7 @@ export default function CumRapChiTiet({ props }) {
                 aria-labelledby="profile-tab"
               >
                 {showtimeItem.map((item, index) => {
-                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) == 0) {
+                  if (getday(item.ngayChieuGioChieu.substring(0, 10)) === 0) {
                     {
                       pushNgay(item.ngayChieuGioChieu.substring(11, 16));
                     }

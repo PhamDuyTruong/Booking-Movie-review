@@ -11,12 +11,12 @@ export default function Footer() {
               <p className="footer__title">TIX</p>
               <div className="row">
                 <div className="col-6">
-                  <a href="">FAQ</a>
-                  <a href="">Brand Guidelines</a>
+                  <a href="#">FAQ</a>
+                  <a href="#">Brand Guidelines</a>
                 </div>
                 <div className="col-6">
-                  <a href="">Thỏa thuận sử dụng</a>
-                  <a href="">Chính sách bảo mật</a>
+                  <a href="#">Thỏa thuận sử dụng</a>
+                  <a href="#">Chính sách bảo mật</a>
                 </div>
               </div>
             </div>
