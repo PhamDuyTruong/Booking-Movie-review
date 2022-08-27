@@ -33,7 +33,7 @@ export default function Carousel() {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src="./img/trang-ti.jpg"
+            src="./img/thor.jpg"
             style={{ width: "100%", height: "500px" }}
             className="d-block w-100"
             alt="Hinh anh"
@@ -43,7 +43,7 @@ export default function Carousel() {
             <div className="container carousel-caption ">
              
               <div className="carousel-trailer">
-              <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="VTnGOjtaWAY" onClose={() => setOpen(false)} />
+              <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="UBgPypHGAqE" onClose={() => setOpen(false)} />
               <button className="btn btn-trailer">
                   <span><i className="bi bi-play-fill" onClick={()=> setOpen(true)}></i></span>
               </button>  
@@ -54,7 +54,7 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="./img/ban-tay-diet-quy-evil.png"
+            src="./img/The-gioi-khung-long.jpg"
             style={{ width: "100%", height: "500px" }}
             className="d-block w-100"
             alt="hinh anh"
@@ -63,7 +63,7 @@ export default function Carousel() {
           <div class="container carousel-caption ">
             
             <div className="carousel-trailer">
-            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="uqJ9u7GSaYM" onClose={() => setOpen(false)} />
+            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="3y0KM5jUnmk" onClose={() => setOpen(false)} />
             <button class="btn btn-trailer" onClick={()=> setOpen(true)}>
                   <span><i className="bi bi-play-fill"></i></span>
             </button>  
