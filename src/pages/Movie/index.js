@@ -161,7 +161,7 @@ export default function Movie() {
           <div className="col-md-6"></div>
         </div>
       </div>
-      {moviesSearch ? (
+      {moviesSearch.length !== 0 ? (
         <div className="container">
            <div className="row">
           {moviesSearch.map((item, index) => (
@@ -173,7 +173,9 @@ export default function Movie() {
         </div>
       ) : (
         <div className="container" style={{display:"block"}}>
-          <p style={{color:"#dcdcdc"}}>Không tìm thấy phim nào !!!</p>
+          <div className="row">
+             <p style={{color:"#dcdcdc"}}>Không tìm thấy phim nào !!!</p>
+          </div>
         </div>
       )}
       <div className="container mb-3" id="showtime">

@@ -72,11 +72,6 @@ export default function Header() {
           aria-label="Toggle navigation"
         >
           <div>
-            <input
-              type="checkbox"
-              className="openSidebarMenu"
-              id="openSidebarMenu"
-            />
             <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
               <div className="spinner diagonal part-1" />
               <div className="spinner horizontal" />
