@@ -15,7 +15,7 @@ export default function Movie() {
     dots: true,
     infinite: true,
     speed: 500,
-    arrows: true,
+    arrows: false,
     autoplay: true,
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -27,7 +27,7 @@ export default function Movie() {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
-          arrows:false,
+          arrows: true,
           infinite: true,
           dots: true,
           autoplay: true,
@@ -39,6 +39,7 @@ export default function Movie() {
           slidesToShow: 4,
           slidesToScroll: 4,
           infinite: true,
+          arrows: true,
           dots: true,
           autoplay: true,
         },
@@ -60,6 +61,7 @@ export default function Movie() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          arrows:false,
           initialSlide: 2,
           autoplay: true,
         },
@@ -178,7 +180,7 @@ export default function Movie() {
           </div>
         </div>
       )}
-      <div className="container mb-3" id="showtime">
+      <div className="container mb-3" id="showtime" style={{overflow: "hidden"}}>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item " role="presentation">
             <a
@@ -216,7 +218,7 @@ export default function Movie() {
             aria-labelledby="home-tab"
           >
             <Slider {...settings}>
-              {movies.map((item, index) => (
+              {moviesAPI.map((item, index) => (
                 <CardMovie key={index} props={item} />
               ))}
             </Slider>
@@ -228,11 +230,9 @@ export default function Movie() {
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <Slider {...settings}>
               {moviesComing.map((item, index) => (
                 <CardMovie key={index} props={item} />
               ))}
-            </Slider>
           </div>
         </div>
       </div>

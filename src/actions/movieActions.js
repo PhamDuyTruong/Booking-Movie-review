@@ -10,7 +10,7 @@ import {
       dispatch({ type: GET_MOVIE_REQUEST });
       try {
         const { data } = await movieAPI.getDataMovies();
-        dispatch({ type: GET_MOVIE_SUCCESS, payload: { data } });
+        dispatch({ type: GET_MOVIE_SUCCESS, payload: data.content });
       } catch (error) {
         dispatch({
           type: GET_MOVIE_FAILURE,

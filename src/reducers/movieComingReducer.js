@@ -12,7 +12,7 @@ function movieComingReducer(state= initialState, action){
             return {...state, Loading: true, errorComing:null}
         }
         case GET_MOVIECOMING_SUCCESS: {
-            return {...state, Loading: false, moviesComing: action.payload.data}
+            return {...state, Loading: false, moviesComing: action.payload}
         }
         case GET_MOVIECOMING_FAILURE:{
             return {...state, Loading: false, errorComing: action.payload.error}

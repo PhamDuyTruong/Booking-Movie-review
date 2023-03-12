@@ -6,7 +6,7 @@ import movieAPI from '../services/movieAPI'
       dispatch({ type: GET_MOVIEAPI_REQUEST });
       try {
         const { data } = await movieAPI.getMovies();
-        dispatch({ type: GET_MOVIEAPI_SUCCESS, payload: { data } });
+        dispatch({ type: GET_MOVIEAPI_SUCCESS, payload: data.content });
       } catch (error) {
         dispatch({
           type: GET_MOVIEAPI_FAILURE,

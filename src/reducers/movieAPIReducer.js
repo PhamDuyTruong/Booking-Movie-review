@@ -12,7 +12,7 @@ function movieAPIReducer(state= initialState, action){
             return {...state, isLoadingMovies:true, error: null}
         }
         case GET_MOVIEAPI_SUCCESS: {
-            return {...state, isLoadingMovies:false, moviesAPI: action.payload.data}
+            return {...state, isLoadingMovies:false, moviesAPI: action.payload}
         }
         case GET_MOVIEAPI_FAILURE:{
             return {...state, isLoadingMovies: false, error: action.payload.error}
