@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {Link} from 'react-router-dom'
 import { getInfoTheater } from "../../actions/infoTheater";
 import { addShowtimeMovie } from "../../actions/showtimeAction";
-import CategoryDate from "../CategoryDate";
+
 
 export default function CumRapChiTiet({scheduleItem}) {
   const { infoTheater, error } = useSelector((state) => state.info);
@@ -58,7 +59,7 @@ export default function CumRapChiTiet({scheduleItem}) {
         <div className="col-md-7 col-12">
             <div className="row">
               
-                {scheduleItem.heThongRapChieu.map(item => (
+                {scheduleItem.length !== 0 && scheduleItem.heThongRapChieu.map(item => (
                   <>
                       {item.cumRapChieu.map(info => (
                         <>
@@ -73,6 +74,15 @@ export default function CumRapChiTiet({scheduleItem}) {
                             <div className="col-md-9 col-6">
                                 <h3>{info.tenCumRap}</h3>
                                 <p>{info.diaChi}</p>
+                                <div>
+                                  {info.lichChieuPhim.map(lich => (
+                                    <div key={lich.maRap} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                    <Link to={`/ticketdetail/${lich.maLichChieu}`} style={{textDecoration:"none"}}>
+                                    <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{lich.ngayChieuGioChieu.substring(11,16)}</p>
+                                    </Link>
+                                  </div>
+                                  ))}
+                                </div>
                             </div>
                         </>
                       ))}
