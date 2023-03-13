@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getDetailMovies } from "../../actions/detailMovie";
 import {getSheduleMovie} from '../../actions/showtimeAction'
+import CumRapChiTiet from "../cumRapChiTiet";
 import PageLoading from "../pageLoading";
 
 export default function MovieDetail(props) {
@@ -16,8 +17,6 @@ export default function MovieDetail(props) {
     dispatch(getDetailMovies(movieId));
     dispatch(getSheduleMovie(movieId))
   }, [movieId]);
-
-  console.log(scheduleItem)
 
   if (Loading) {
     return (
@@ -195,9 +194,7 @@ export default function MovieDetail(props) {
           <div className="row">
             <div className="col-8 d-flex">
               <button className="detail-trailer btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Xem Trailer</button>
-              <Link to="/theater">
-                  <button className="detail-ticket btn">Mua Vé</button>
-              </Link>
+                  <button className="detail-ticket btn" onClick={scrollHeight}>Mua Vé</button>
             </div>
             <div className="col-4"></div>
           </div>
@@ -233,6 +230,8 @@ export default function MovieDetail(props) {
         </div>
       </div>
     </div>
+    <h2 style={{textAlign: "center", color: "#DF2E38", marginTop: "8px"}}>Thông tin lịch chiếu</h2>
+    <CumRapChiTiet scheduleItem={scheduleItem}/>
   </>
   );
 }
