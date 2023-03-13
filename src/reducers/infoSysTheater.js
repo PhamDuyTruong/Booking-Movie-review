@@ -12,7 +12,7 @@ function sysTheaterMovie(state = intialState, action){
             return {...state, Loading: true, error:null}
         }
         case GET_INFOSYSTHEATERMOVIE_SUCCESS:{
-            return{...state, Loading: false, sysTheater:action.payload.data }
+            return{...state, Loading: false, sysTheater:action.payload }
         }
         case GET_INFOSYSTHEATERMOVIE_FAILURE:{
             return{...state, Loading:true, error: action.payload.error}

@@ -5,7 +5,7 @@ export function getInfoSystemTheater(theaterId){
         dispatch({ type: GET_INFOSYSTHEATERMOVIE_REQUEST });
         try {
           const { data } = await theaterAPI.getInfoSystemTheater(theaterId);
-          dispatch({ type: GET_INFOSYSTHEATERMOVIE_SUCCESS, payload: { data } });
+          dispatch({ type: GET_INFOSYSTHEATERMOVIE_SUCCESS, payload:  data.content });
         } catch (error) {
           dispatch({
             type: GET_INFOSYSTHEATERMOVIE_FAILURE,

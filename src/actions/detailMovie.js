@@ -6,7 +6,7 @@ export function getDetailMovies(movieId){
         dispatch({ type: GET_DETAILMOVIE_REQUEST });
         try {
           const { data } = await movieAPI.getDetailMovies(movieId);
-          dispatch({ type: GET_DETAILMOVIE_SUCCESS, payload: { data } });
+          dispatch({ type: GET_DETAILMOVIE_SUCCESS, payload: data.content});
         } catch (error) {
           dispatch({
             type: GET_DETAILMOVIE_FAILURE,

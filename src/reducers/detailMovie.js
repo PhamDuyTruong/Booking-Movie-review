@@ -12,7 +12,7 @@ function detailMovie(state= initialState, action){
             return {...state, Loading: true, error:null}
         }
         case GET_DETAILMOVIE_SUCCESS: {
-            return {...state, Loading: false, detailMovie: action.payload.data}
+            return {...state, Loading: false, detailMovie: action.payload}
         }
         case GET_DETAILMOVIE_FAILURE:{
             return {...state, Loading: false, error: action.payload.error}

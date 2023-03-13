@@ -6,7 +6,7 @@ export function getInfoTheater() {
         dispatch({ type: GET_INFOTHEATER_REQUEST });
         try {
           const { data } = await theaterAPI.getInfoTheater();
-          dispatch({ type: GET_INFOTHEATER_SUCCESS, payload: { data } });
+          dispatch({ type: GET_INFOTHEATER_SUCCESS, payload: data.content });
         } catch (error) {
           dispatch({
             type: GET_INFOTHEATER_FAILURE,
