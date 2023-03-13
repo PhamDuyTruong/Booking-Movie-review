@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getDetailMovies } from "../../actions/detailMovie";
+import {getSheduleMovie} from '../../actions/showtimeAction'
 import PageLoading from "../pageLoading";
-import CumRapChiTiet from '../cumRapChiTiet'
 
 export default function MovieDetail(props) {
   const { movieId } = useParams();
   const { detailMovie, Loading, error } = useSelector(
     (state) => state.detailMovie
   );
+  const {scheduleItem, isLoading} = useSelector((state) => state.showtime)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDetailMovies(movieId));
+    dispatch(getSheduleMovie(movieId))
   }, [movieId]);
+
+  console.log(scheduleItem)
 
   if (Loading) {
     return (
@@ -191,8 +195,9 @@ export default function MovieDetail(props) {
           <div className="row">
             <div className="col-8 d-flex">
               <button className="detail-trailer btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Xem Trailer</button>
-
-              <button className="detail-ticket btn" onClick={scrollHeight}>Mua Vé</button>
+              <Link to="/theater">
+                  <button className="detail-ticket btn">Mua Vé</button>
+              </Link>
             </div>
             <div className="col-4"></div>
           </div>
@@ -228,7 +233,6 @@ export default function MovieDetail(props) {
         </div>
       </div>
     </div>
-    <CumRapChiTiet props={detailMovie}></CumRapChiTiet>
   </>
   );
 }

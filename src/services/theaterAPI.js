@@ -13,6 +13,9 @@ const theaterAPI ={
             maNhom: "GP03"
         }
         return axiosClient.get("/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap="+ params.maHeThongRap +"&maNhom=GP03")
+    },
+    getScheduleById: (movieId) => {
+        return axiosClient.get(`/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${movieId}`)
     }
 }
 

@@ -4,7 +4,7 @@ import { getInfoTheater } from "../../actions/infoTheater";
 import { addShowtimeMovie } from "../../actions/showtimeAction";
 import CategoryDate from "../CategoryDate";
 
-export default function CumRapChiTiet({ props }) {
+export default function CumRapChiTiet(props) {
   const { infoTheater, error } = useSelector((state) => state.info);
   const { showtimeItem } = useSelector((state) => state.showtime);
   const [active, setActive] = useState("");
@@ -15,6 +15,8 @@ export default function CumRapChiTiet({ props }) {
   if (error) {
     <div>{error}</div>;
   }
+
+  console.log(infoTheater)
 
   const handleShowtimes = (item, id) => {
     dispatch(addShowtimeMovie(item, id));
