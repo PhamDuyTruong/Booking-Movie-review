@@ -12,7 +12,7 @@ function infoTheater(state= initialState, action){
             return {...state, Loading: true, error:null}
         }
         case GET_INFOTHEATER_SUCCESS: {
-            return {...state, Loading: false, infoTheater: action.payload.data}
+            return {...state, Loading: false, infoTheater: action.payload}
         }
         case GET_INFOTHEATER_FAILURE:{
             return {...state, Loading: false, error: action.payload.error}

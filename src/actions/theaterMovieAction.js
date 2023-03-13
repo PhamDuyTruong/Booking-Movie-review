@@ -6,7 +6,7 @@ export function getDataTheater() {
         dispatch({ type: GET_THEATERMOVIE_REQUEST });
         try {
           const { data } = await theaterAPI.getDataTheater();
-          dispatch({ type: GET_THEATERMOVIE_SUCCESS, payload: { data } });
+          dispatch({ type: GET_THEATERMOVIE_SUCCESS, payload: data.content  });
         } catch (error) {
           dispatch({
             type: GET_THEATERMOVIE_FAILURE,

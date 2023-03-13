@@ -11,7 +11,7 @@ function theaterMovie(state= initialState, action){
             return {...state, isLoading: true, error:null}
         }
         case GET_THEATERMOVIE_SUCCESS: {
-            return {...state, isLoading: false, theater: action.payload.data}
+            return {...state, isLoading: false, theater: action.payload}
         }
         case GET_THEATERMOVIE_FAILURE:{
             return {...state, isLoading: false, error: action.payload.error}
