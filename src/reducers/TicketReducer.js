@@ -12,7 +12,7 @@ function ticketMovie(state= initialState, action){
             return {...state, Loading: true, error:null}
         }
         case GET_TICKETMOVIE_SUCCESS: {
-            return {...state, Loading: false, ticketMovie: action.payload.data}
+            return {...state, Loading: false, ticketMovie: action.payload}
         }
         case GET_TICKETMOVIE_FAILURE:{
             return {...state, Loading: false, error: action.payload.error}

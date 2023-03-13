@@ -7,7 +7,7 @@ export function getInfoTicket(maLichChieu){
         try {
           const { data } = await ticketAPI.getInfoTicket(maLichChieu);
           
-          dispatch({ type: GET_TICKETMOVIE_SUCCESS, payload: { data } });
+          dispatch({ type: GET_TICKETMOVIE_SUCCESS, payload: data.content });
         } catch (error) {
           dispatch({
             type: GET_TICKETMOVIE_FAILURE,
