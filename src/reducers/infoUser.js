@@ -5,7 +5,7 @@ import {
 } from "../constants/infoUserConstant";
 
 const initialState = {
-  infoUser: JSON.parse(localStorage.getItem("userInfo")) ||  null,
+  infoUser: localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) :  null,
   Loading: false,
   error: null,
 };

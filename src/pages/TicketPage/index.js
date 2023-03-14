@@ -1,16 +1,18 @@
+import ticketAPI from "../../services/ticketsAPI";
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { datGhe } from "../../actions/datGheAction";
 import { getInfoTicket } from "../../actions/TicketAction";
 import PageLoading from "../pageLoading";
-
+import Swal from 'sweetalert2'
 export default function TicketPage(props) {
   const [combo, setcombo] = useState(0);
   const [selectedOption, setSelectedOption] = useState("option1")
   const {maLichChieu} = useParams();
   const {ticketMovie, Loading, error} = useSelector((state) => state.ticket);
   const {danhSachGheDat} = useSelector((state) => state.ghe);
+  console.log(danhSachGheDat)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getInfoTicket(maLichChieu))
@@ -98,9 +100,28 @@ export default function TicketPage(props) {
     setSelectedOption(event.target.value)
   }
   const handleSubmit = () =>{
-    if(infoUser && selectedOption){
-        window.location= "/payment"
-    }
+    ticketAPI.buyTicket({
+      maLichChieu: maLichChieu,
+      danhSachVe: {
+        maGhe: danhSachGheDat.maGhe,
+        giaVe: danhSachGheDat.giaVe
+      }
+    }).then((res) => {
+      console.log(res.data.content)
+      Swal.fire(
+        "Đặt ghế thành công!",
+        "Vui lòng chọn phim tiếp theo muốn đặt!",
+        "thành công"
+      ).then((result) => {
+        if (result.isConfirmed) {
+          // Fix Redirect here !
+          window.location = "/";
+        }
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   return (

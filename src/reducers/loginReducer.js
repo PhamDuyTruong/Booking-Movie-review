@@ -16,7 +16,7 @@ function loginReducer(state = initialState, action) {
       return { ...state, Loading: true, error: null };
     }
     case LOGIN_SUCCESS: {
-      return { ...state, Loading: false, dataLogin: action.payload.data };
+      return { ...state, Loading: false, dataLogin: action.payload };
     }
     case LOGIN_FAILURE: {
       return { ...state, Loading: false, error: action.payload.error };

@@ -120,8 +120,7 @@ export default function VerticalTabs() {
     };
     dispatch(getInfoUser());
   }, []);
-  console.log(infoTicket)
-  console.log(infoUser.content.thongTinDatVe)
+  console.log(infoUser)
 
   // Set value here and show Info User right away !
   useEffect(() => {
@@ -153,23 +152,17 @@ export default function VerticalTabs() {
   // handle book ticket user
   const handleBookTicketUser = () => {
     if (infoUser) {
-      if(infoPayment === false){
-        infoUser.content.thongTinDatVe = infoTicket
-      }
-      if (infoUser.content?.thongTinDatVe.length === 0) {
-        return <p>Bạn chưa đặt vé nào cả</p>
-      } else {
         return (
           <>
           <h2 style={{fontSize:"25px"}}>Bạn đã đặt vé !!!</h2>
           <p  style={{fontWeight:"bold"}}>Thông tin vé</p>
-          {infoUser.content.thongTinDatVe.map((item, index) =>{
+          {infoUser.content?.thongTinDatVe?.map((item, index) =>{
             return (
                 <div>
                     <div className="d-flex">
                         <h2 style={{fontSize:"20px", color:"#ff3300"}}>Vé {index+1}</h2>
-                        <p className="px-3">Mã rạp: {item.maRap}</p>
-                        <p className="px-3">Tên ghế: {item.tenGhe}</p>
+                        <p className="px-3">Tên phim: {item.tenPhim}</p>
+                        <p className="px-3">Ngày đặt: {item.ngayDat}</p>
                         <p>Giá vé: {item.giaVe}</p>
                     </div>
                 </div>
@@ -179,7 +172,6 @@ export default function VerticalTabs() {
           
         );
       }
-    }
   };
 
   // Handle Logout here
@@ -321,7 +313,7 @@ export default function VerticalTabs() {
             </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            {infoUser && handleBookTicketUser()}
+            {handleBookTicketUser()}
           </TabPanel>
           <TabPanel value={value} index={2}></TabPanel>
         </div>

@@ -6,7 +6,7 @@ export function getInfoTicket(maLichChieu){
         dispatch({ type: GET_TICKETMOVIE_REQUEST });
         try {
           const { data } = await ticketAPI.getInfoTicket(maLichChieu);
-          
+         
           dispatch({ type: GET_TICKETMOVIE_SUCCESS, payload: data.content });
         } catch (error) {
           dispatch({

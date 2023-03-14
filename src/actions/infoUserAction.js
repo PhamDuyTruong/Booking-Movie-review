@@ -10,7 +10,8 @@ export function getInfoUser() {
     dispatch({ type: INFO_USER_REQUEST });
     try {
       const { data } = await userAPI.userInfo();
-      console.log(data)
+      // console.log(data)
+      localStorage.setItem("userInfo", JSON.stringify(data));
       dispatch({ type: INFO_USER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
