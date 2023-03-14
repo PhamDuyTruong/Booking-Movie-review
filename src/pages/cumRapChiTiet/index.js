@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {Link} from 'react-router-dom'
 import { getInfoTheater } from "../../actions/infoTheater";
-import { addShowtimeMovie } from "../../actions/showtimeAction";
-
 
 export default function CumRapChiTiet({scheduleItem}) {
   const { infoTheater, error } = useSelector((state) => state.info);

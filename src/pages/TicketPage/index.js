@@ -211,7 +211,7 @@ export default function TicketPage(props) {
                   {/* Lấy email từ userInfo */}
                   {infoUser === null ?   <p style={{color:"#aa0000"}}>Bạn cần phải đăng nhập !!!</p>: 
                   <p>
-                    {infoUser.email}
+                    {infoUser.content.email}
                   </p>}
                   
               </div>
@@ -220,7 +220,7 @@ export default function TicketPage(props) {
                   {/* Lấy số điện thoại từ userInfo */}
                   {infoUser === null ?   <p style={{color:"#aa0000"}}>Bạn cần phải đăng nhập !!!</p>: 
                   <p>
-                    {infoUser.soDT}
+                    {infoUser.content.soDT}
                   </p>}
                 
               </div>

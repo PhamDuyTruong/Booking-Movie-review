@@ -1,8 +1,8 @@
 import axiosClient from "./axiosClient";
 
 const userAPI = {
-  userInfo: (value) => {
-    return axiosClient.post("/QuanLyNguoiDung/ThongTinTaiKhoan", value);
+  userInfo: () => {
+    return axiosClient.post("/QuanLyNguoiDung/ThongTinTaiKhoan");
   },
   updateUserInfo: (value) => {
     return axiosClient.put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", value);

@@ -5,7 +5,7 @@ import {
 } from "../constants/infoUserConstant";
 
 const initialState = {
-  infoUser: null,
+  infoUser: JSON.parse(localStorage.getItem("userInfo")) ||  null,
   Loading: false,
   error: null,
 };
@@ -16,7 +16,7 @@ function infoUser(state = initialState, action) {
       return { ...state, Loading: true, error: null };
     }
     case INFO_USER_SUCCESS: {
-      return { ...state, Loading: false, infoUser: action.payload.data };
+      return { ...state, Loading: false, infoUser: action.payload };
     }
     case INFO_USER_FAILURE: {
       return { ...state, Loading: false, error: action.payload.error };

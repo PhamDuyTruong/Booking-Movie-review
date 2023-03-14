@@ -118,17 +118,19 @@ export default function VerticalTabs() {
     const ObjToGetInfoUser = {
       taiKhoan: infoUserInLocalStorage.taiKhoan,
     };
-    dispatch(getInfoUser(ObjToGetInfoUser));
+    dispatch(getInfoUser());
   }, []);
+  console.log(infoTicket)
+  console.log(infoUser.content.thongTinDatVe)
 
   // Set value here and show Info User right away !
   useEffect(() => {
     if (infoUser) {
-      setValue("email", infoUser.email);
-      setValue("account", infoUser.taiKhoan);
-      setValue("fullName", infoUser.hoTen);
-      setValue("password", infoUser.matKhau);
-      setValue("phone", infoUser.soDT);
+      setValue("email", infoUser.content.email);
+      setValue("account", infoUser.content.taiKhoan);
+      setValue("fullName", infoUser.content.hoTen);
+      setValue("password", infoUser.content.matKhau);
+      setValue("phone", infoUser.content.soDT);
     }
   }, [infoUser]);
 
@@ -140,7 +142,7 @@ export default function VerticalTabs() {
       matKhau: value.password,
       email: value.email,
       soDt: value.phone,
-      maNhom: "GP10",
+      maNhom: "GP03",
       maLoaiNguoiDung: "KhachHang",
       hoTen: value.fullName,
     };
@@ -152,17 +154,16 @@ export default function VerticalTabs() {
   const handleBookTicketUser = () => {
     if (infoUser) {
       if(infoPayment === false){
-        infoUser.thongTinDatVe = infoTicket
+        infoUser.content.thongTinDatVe = infoTicket
       }
-      console.log(infoUser.thongTinDatVe);
-      if (infoUser.thongTinDatVe.length === 0) {
-        return "Bạn chưa đặt vé nào cả"
+      if (infoUser.content?.thongTinDatVe.length === 0) {
+        return <p>Bạn chưa đặt vé nào cả</p>
       } else {
         return (
           <>
           <h2 style={{fontSize:"25px"}}>Bạn đã đặt vé !!!</h2>
           <p  style={{fontWeight:"bold"}}>Thông tin vé</p>
-          {infoUser.thongTinDatVe.map((item, index) =>{
+          {infoUser.content.thongTinDatVe.map((item, index) =>{
             return (
                 <div>
                     <div className="d-flex">
@@ -231,7 +232,7 @@ export default function VerticalTabs() {
                       type="email"
                       className="form-control mb-3"
                       aria-describedby="emailHelp"
-                      placeholder="Enter email"
+                      placeholder="Nhập email"
                       {...register("email")}
                     />
                     {errors.email && (
@@ -245,7 +246,7 @@ export default function VerticalTabs() {
                     <input
                       type="text"
                       className="form-control mb-3"
-                      placeholder="Password"
+                      placeholder="Nhập Tài khoản"
                       {...register("account")}
                     />
                     {errors.account && (
@@ -260,7 +261,7 @@ export default function VerticalTabs() {
                       type="text"
                       className="form-control mb-3"
                       aria-describedby="emailHelp"
-                      placeholder="Enter email"
+                      placeholder="Nhập họ tên"
                       {...register("fullName")}
                     />
                     {errors.fullName && (
@@ -290,7 +291,7 @@ export default function VerticalTabs() {
                       type="text"
                       className="form-control mb-3"
                       aria-describedby="emailHelp"
-                      placeholder="Enter email"
+                      placeholder="Nhập số điện thoại"
                       {...register("phone")}
                     />
                     {errors.phone && (
@@ -320,7 +321,7 @@ export default function VerticalTabs() {
             </div>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            {handleBookTicketUser()}
+            {infoUser && handleBookTicketUser()}
           </TabPanel>
           <TabPanel value={value} index={2}></TabPanel>
         </div>

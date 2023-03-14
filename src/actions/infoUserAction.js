@@ -5,12 +5,13 @@ import {
 } from "../constants/infoUserConstant";
 import userAPI from "../services/userAPI";
 
-export function getInfoUser(value) {
+export function getInfoUser() {
   return async (dispatch) => {
     dispatch({ type: INFO_USER_REQUEST });
     try {
-      const { data } = await userAPI.userInfo(value);
-      dispatch({ type: INFO_USER_SUCCESS, payload: { data } });
+      const { data } = await userAPI.userInfo();
+      console.log(data)
+      dispatch({ type: INFO_USER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
         type: INFO_USER_FAILURE,
