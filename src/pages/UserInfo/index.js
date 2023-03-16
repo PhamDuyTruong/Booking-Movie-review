@@ -148,6 +148,7 @@ export default function VerticalTabs() {
     dispatch(updateInfoUser(ObjToUpdateInfoUser));
   };
 
+  console.log(infoUser.content?.thongTinDatVe)
 
   // handle book ticket user
   const handleBookTicketUser = () => {
@@ -155,16 +156,29 @@ export default function VerticalTabs() {
         return (
           <>
           <h2 style={{fontSize:"25px"}}>Bạn đã đặt vé !!!</h2>
-          <p  style={{fontWeight:"bold"}}>Thông tin vé</p>
+          <h2  style={{fontWeight:"bold"}}>Thông tin vé đã đặt</h2>
           {infoUser.content?.thongTinDatVe?.map((item, index) =>{
             return (
-                <div>
+                <div key={index}>
                     <div className="d-flex">
-                        <h2 style={{fontSize:"20px", color:"#ff3300"}}>Vé {index+1}</h2>
-                        <p className="px-3">Tên phim: {item.tenPhim}</p>
-                        <p className="px-3">Ngày đặt: {item.ngayDat}</p>
-                        <p>Giá vé: {item.giaVe}</p>
+                        <p  style={{fontWeight: "600", color: "#E21818", fontSize: "20px"}}>{index + 1}.</p>
+                        <p className="px-3" style={{fontWeight: "600", color: "#E21818", fontSize: "20px"}}>Tên phim: {item.tenPhim}</p>
+                        <p className="px-3" style={{fontWeight: "600", color: "#E21818", fontSize: "20px"}}>Ngày đặt: {item.ngayDat.substring(11,16)}</p>
+                        <p style={{fontWeight: "600", color: "#E21818", fontSize: "20px"}}>Giá vé: {item.giaVe}</p>
                     </div>
+                    <div>
+                       <h4 style={{fontWeight:"bold"}}>Chi tiết vé</h4>
+                       {item.danhSachGhe.map((item, index) => (
+                          <div style={{border: "1px solid #ddd"}} key={index}>
+                          <p style={{fontWeight: "bold"}}>Vé {index + 1}</p>
+                          <p>Ghế: {item.tenGhe}</p>
+                          <p>Rạp: {item.tenRap}</p>
+                          <p>Hệ thống rạp: {item.tenHeThongRap}</p>
+                          
+                          </div>
+                       ))}
+                    </div>
+                    <hr />
                 </div>
             )
           })}
