@@ -10,7 +10,7 @@ import movieAPI from '../services/movieAPI'
       } catch (error) {
         dispatch({
           type: GET_MOVIEAPI_FAILURE,
-          payload: { error: error.response.data },
+          // payload: { error: error.response.data },
         });
       }
     };

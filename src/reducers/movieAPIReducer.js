@@ -15,7 +15,7 @@ function movieAPIReducer(state= initialState, action){
             return {...state, isLoadingMovies:false, moviesAPI: action.payload}
         }
         case GET_MOVIEAPI_FAILURE:{
-            return {...state, isLoadingMovies: false, error: action.payload.error}
+            return {...state, isLoadingMovies: false, error: null}
         }
         default:
             return state;

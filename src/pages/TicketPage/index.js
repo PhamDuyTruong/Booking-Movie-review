@@ -6,6 +6,8 @@ import { datGhe } from "../../actions/datGheAction";
 import { getInfoTicket } from "../../actions/TicketAction";
 import PageLoading from "../pageLoading";
 import Swal from 'sweetalert2'
+import axios from "axios";
+import {CYBERSOFT_TOKEN} from '../../services/axiosClient'
 export default function TicketPage(props) {
   const [combo, setcombo] = useState(0);
   const [selectedOption, setSelectedOption] = useState("option1")
@@ -17,7 +19,8 @@ export default function TicketPage(props) {
   useEffect(() => {
     dispatch(getInfoTicket(maLichChieu))
     
-  }, [])
+  }, []);
+
   
   if (Loading) {
     return (
@@ -76,19 +79,19 @@ export default function TicketPage(props) {
      }
      let newDanhSachPhim = [];
      danhSachGheDat.map(item =>{
-       // Nếu có tài khoản thì thông tin vé và thông tin phim sẽ được lưu vào localStorage
-       if(infoUser){
-       item.taiKhoanNguoiDat = infoUser.taiKhoan;
-      }
-       newDanhSachPhim.push({maGhe: item.maGhe, tenGhe: item.tenGhe, giaVe: item.giaVe, maRap: item.maRap, taiKhoan: item.taiKhoanNguoiDat})
+       // Nếu có tài khoản thì thông tin vé và thông tin phim sẽ được lưu vào localStorag
+       newDanhSachPhim.push({maGhe: item.maGhe, giaVe: item.giaVe})
        localStorage.setItem("ticketInfo", JSON.stringify(newDanhSachPhim))
      })
     
     localStorage.removeItem("PaymentInfo")
-    
+    const data = {
+      maGhe: hangGhe.maGhe,
+      giaVe: hangGhe.giaVe
+    }
       return (
         <div key={index} className="text-light text-left ml-5 col-md-2 col-lg-1 col-xs-3 col-2">
-            <button onClick={()=>handleDatGhe(hangGhe)} className={`btn ${cssGheDat} ${cssGheDangDat} ${cssGheDaDat} `} disabled ={disabled} style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}}>
+            <button onClick={()=>handleDatGhe(data)} className={`btn ${cssGheDat} ${cssGheDangDat} ${cssGheDaDat} `} disabled ={disabled} style={{width:"50px", border:"2px solid orange", marginBottom:"5px", padding:"2px"}}>
                 {hangGhe.tenGhe}
             </button>
         </div>
@@ -99,29 +102,40 @@ export default function TicketPage(props) {
   const handleOptionChange = (event) =>{
     setSelectedOption(event.target.value)
   }
-  const handleSubmit = () =>{
-    ticketAPI.buyTicket({
-      maLichChieu: maLichChieu,
-      danhSachVe: {
-        maGhe: danhSachGheDat.maGhe,
-        giaVe: danhSachGheDat.giaVe
-      }
-    }).then((res) => {
-      console.log(res.data.content)
-      Swal.fire(
-        "Đặt ghế thành công!",
-        "Vui lòng chọn phim tiếp theo muốn đặt!",
-        "thành công"
-      ).then((result) => {
-        if (result.isConfirmed) {
-          // Fix Redirect here !
-          window.location = "/";
-        }
+  const handleSubmit = async () =>{
+    const data = {
+      maLichChieu: Number.parseInt(maLichChieu),
+      danhSachVe: danhSachGheDat
+    }
+    const headers = {
+      "Content-Type": "application/json-patch+json",
+      Authorization: `Bearer ${infoUser.content.accessToken}`,
+      TokenCybersoft: CYBERSOFT_TOKEN,
+    };
+    const method = "post";
+    const url = "https://movienew.cybersoft.edu.vn/api/QuanLyDatVe/DatVe"
+      await axios({url, method, data, headers}).then((res) => {
+        Swal.fire(
+          "Đặt vé thành công !",
+          "Vui lòng chọn vé tiếp theo",
+          "Thành công"
+        ).then((result) => {
+          if (result.isConfirmed) {
+            console.log("Redirect");
+            window.location.href = "/";
+          }
+        });
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+        Swal.fire(
+          "Đặt vé thành công !",
+          "Vui lòng chọn vé tiếp theo",
+          "Thành công"
+        ).then((result) => {
+          if (result.isConfirmed) {
+            console.log("Redirect");
+            window.location.href = "/";
+          }
+        });
   }
 
   return (

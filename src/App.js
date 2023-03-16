@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {lazy, Suspense} from 'react'
 import AppLayout from "./layouts/AppLayout";
+import axios from 'axios'
 const Home = lazy(() => import("./pages/Home"));
 const ForgotPasswword = lazy(() => import("./pages/ForgotPassword"))
 const LoginPage = lazy(() => import("./pages/LoginPage"))
@@ -16,6 +17,7 @@ const UserInfo = lazy(() => import("./pages/UserInfo"))
 const UserRoute = lazy(() =>import("./auth/UserRoute"))
 const Payment = lazy(() => import("./pages/payment"))
 function App() {
+  axios.defaults.withCredentials = false;
   return (
     <Suspense fallback={<div>
         <i className="fa fa-spinner fa-spin" style={{color:"#000"}}></i>Loading...

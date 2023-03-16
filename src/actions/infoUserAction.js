@@ -11,12 +11,12 @@ export function getInfoUser() {
     try {
       const { data } = await userAPI.userInfo();
       // console.log(data)
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      // localStorage.setItem("userInfo", JSON.stringify(data));
       dispatch({ type: INFO_USER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
         type: INFO_USER_FAILURE,
-        payload: { error: error.response.data },
+        // payload: { error: error.response.data },
       });
     }
   };

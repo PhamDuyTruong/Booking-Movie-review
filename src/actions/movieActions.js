@@ -14,7 +14,7 @@ import {
       } catch (error) {
         dispatch({
           type: GET_MOVIE_FAILURE,
-          payload: { error: error.response.data },
+          // payload: { error: error.response.data },
         });
       }
     };

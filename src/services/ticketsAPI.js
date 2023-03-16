@@ -1,4 +1,5 @@
-import axiosClient from './axiosClient'
+import axiosClient from './axiosClient';
+import axios from 'axios'
 
 const ticketAPI ={
     getInfoTicket:(maLichChieu) =>{
@@ -8,7 +9,11 @@ const ticketAPI ={
         return axiosClient.get("/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu="+params.maLichChieu)
     },
     buyTicket: (boughtTicket) => {
-        return axiosClient.post("/QuanLyDatVe/DatVe", boughtTicket)
+        return axios.post("https://movienew.cybersoft.edu.vn/api/QuanLyDatVe/DatVe", boughtTicket, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
     }
 };
 

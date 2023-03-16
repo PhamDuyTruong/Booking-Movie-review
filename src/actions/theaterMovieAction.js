@@ -10,7 +10,6 @@ export function getDataTheater() {
         } catch (error) {
           dispatch({
             type: GET_THEATERMOVIE_FAILURE,
-            payload: { error: error.response.data },
           });
         }
       };

@@ -15,7 +15,7 @@ function movieReducer(state= initialState, action){
             return {...state, isLoading: false, movies: action.payload}
         }
         case GET_MOVIE_FAILURE:{
-            return {...state, isLoading: false, error: action.payload.error}
+            return {...state, isLoading: false, error: null}
         }
         default:
             return state;

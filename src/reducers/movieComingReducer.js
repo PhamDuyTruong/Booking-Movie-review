@@ -15,7 +15,7 @@ function movieComingReducer(state= initialState, action){
             return {...state, Loading: false, moviesComing: action.payload}
         }
         case GET_MOVIECOMING_FAILURE:{
-            return {...state, Loading: false, errorComing: action.payload.error}
+            return {...state, Loading: false, errorComing: null}
         }
         default:
             return state;
