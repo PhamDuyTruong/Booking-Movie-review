@@ -15,7 +15,6 @@ const SysTheaterDetail = lazy(() => import("./pages/SysTheaterDetail"))
 const TicketPage = lazy(() =>import("./pages/TicketPage"))
 const UserInfo = lazy(() => import("./pages/UserInfo"))
 const UserRoute = lazy(() =>import("./auth/UserRoute"))
-const Payment = lazy(() => import("./pages/payment"))
 function App() {
   axios.defaults.withCredentials = false;
   return (
@@ -61,9 +60,6 @@ function App() {
               </Route>
               <Route path="/ticketdetail/:maLichChieu">
                 <TicketPage />
-              </Route>
-              <Route path="/payment">
-                <Payment />
               </Route>
               <Route>
                 <PageNotFound />
