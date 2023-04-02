@@ -189,7 +189,7 @@ export default function TheaterMovie() {
                     </div>
                     <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Mon: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thứ 2: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -210,7 +210,7 @@ export default function TheaterMovie() {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Tue: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thứ 3: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -231,7 +231,7 @@ export default function TheaterMovie() {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Wed: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thứ 4: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -252,7 +252,7 @@ export default function TheaterMovie() {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thu: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thứ 5: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -273,7 +273,7 @@ export default function TheaterMovie() {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Fri: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thứ 6: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -295,7 +295,7 @@ export default function TheaterMovie() {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Sat: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Thứ 7: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">
@@ -316,7 +316,7 @@ export default function TheaterMovie() {
                           </div>
                           <div className="time d-flex">
                             <div className="hour">
-                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Sun: </p>
+                              <p className="px-2" style={{color:"#fb4226", fontSize:"20px", fontWeight:"bold"}}>Chủ nhật: </p>
                             </div>
                             <div className="hour-container">
                               <div className="row">

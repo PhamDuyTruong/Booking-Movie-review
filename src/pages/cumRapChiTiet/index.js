@@ -72,9 +72,9 @@ export default function CumRapChiTiet({scheduleItem}) {
                             <div className="col-md-9 col-6">
                                 <h3>{info.tenCumRap}</h3>
                                 <p>{info.diaChi}</p>
-                                <div>
+                                <div className="row" style={{ display: "flex", }}>
                                   {info.lichChieuPhim.map(lich => (
-                                    <div key={lich.maRap} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                    <div key={lich.maRap} className="col-md-3 col-6">
                                     <Link to={`/ticketdetail/${lich.maLichChieu}`} style={{textDecoration:"none"}}>
                                     <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{lich.ngayChieuGioChieu.substring(11,16)}</p>
                                     </Link>
