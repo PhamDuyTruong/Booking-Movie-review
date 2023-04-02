@@ -197,7 +197,7 @@ export default function TheaterMovie() {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))===1){
                                   return (
-                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight: "20px"}}>
                                      <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                         <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                       </Link>
@@ -218,7 +218,7 @@ export default function TheaterMovie() {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))===2){
                                   return (
-                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight: "20px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                     <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                     </Link>
@@ -239,7 +239,7 @@ export default function TheaterMovie() {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))===3){
                                   return (
-                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight: "20px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                        <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                     </Link>
@@ -281,7 +281,7 @@ export default function TheaterMovie() {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))===5){
                                   return (
-                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight: "20px"}} >
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                         <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                     </Link>
@@ -303,7 +303,7 @@ export default function TheaterMovie() {
                                 {item.lstLichChieuTheoPhim.map((item, index) =>{
                                   if(getday(item.ngayChieuGioChieu.substring(0,10))===6){
                                   return (
-                                  <div key={index} className="col-md-3 col-6" style={{marginRight:"25px"}}>
+                                  <div key={index} className="col-md-3 col-6" style={{marginRight: "20px"}}>
                                     <Link to={`/ticketdetail/${item.maLichChieu}`} style={{textDecoration:"none"}}>
                                         <p className="time-content" style={{color:"#ffbd61", fontSize:"20px", fontWeight:"bold"}}>{item.ngayChieuGioChieu.substring(11,16)}</p>
                                     </Link>
